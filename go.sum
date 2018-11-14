@@ -1,0 +1,4 @@
+github.com/gorilla/mux v0.0.0-20181030152528-3d80bc801bb0 h1:YgBMKQ7PiC1CepcIEzovEjm4knoYycNpz/81l6rpS2s=
+github.com/gorilla/mux v0.0.0-20181030152528-3d80bc801bb0/go.mod h1:1lud6UwP+6orDFRuTfBEV8e9/aOM/c4fVVCaMa2zaAs=
+github.com/isberg1/IMT2681-Assignment-3 v0.0.0-20181114153756-77f8424e5eaa h1:cnmUv3lROepdZeOHlwJoj21ooM5JoszfCNJkqAD9kAs=
+github.com/isberg1/IMT2681-Assignment-3 v0.0.0-20181114153756-77f8424e5eaa/go.mod h1:hGa/37V6FH+zrujeCk6oLKUQSYOFzCr5TC/2DIB1pUI=
