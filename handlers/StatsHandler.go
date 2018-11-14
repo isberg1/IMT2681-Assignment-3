@@ -46,16 +46,26 @@ func Statistic(str string)  {
 	_, ok := teller[str]
 	if !ok {
 		teller[str] = 0
+	} else {
+		teller[str] += 1
 	}
+	// count up the usage for a g
 
 
+	/*
 	switch str {
 	case "joke":
 		teller[str] += 1
-
 	case "dad":
 		teller[str] += 1
-
+	case "cat gif":
+		teller[str] += 1
+	case "dog gif":
+		teller[str] += 1
+	case "hacker gif":
+		teller[str] += 1
+	case "trending gif":
+		teller[str] += 1
 	default:
 		logging("function called with incorrect string")
 	}
@@ -63,5 +73,5 @@ func Statistic(str string)  {
 	if len(teller) < 0 {
 		fmt.Print(teller[str])
 	}
-
+*/
 }
