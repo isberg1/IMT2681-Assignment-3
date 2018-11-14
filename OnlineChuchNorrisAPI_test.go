@@ -31,14 +31,14 @@ func Test_getChuckNorrisJoke(t *testing.T)  {
 	}
 
 	if res.StatusCode != expextedStatusCode {
-		t.Error("incorrect status code form heroku post")
+		t.Error("incorrect status code form heroku post",res.StatusCode)
 	}
 
 	var responseStruct handlers.DialogFlowResponceStruct
 
 	err3 := json.NewDecoder(res.Body).Decode(&responseStruct)
 	if err3 != nil {
-		t.Error("unable do unmarshal dialogflow type json message")
+		t.Error("unable do unmarshal dialogflow type json message",err3)
 	}
 
 	if responseStruct.FulfillmentText == "" || responseStruct.Payload.Slack.Text == "" {
