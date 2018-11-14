@@ -17,7 +17,7 @@ type dadjoke struct {
 }
 
 // GetRandomDadJoke gets a random dad joke as json.
-func GetRandomDadJoke(w http.ResponseWriter, r *http.Request) {
+func getRandomDadJoke(w http.ResponseWriter, r *http.Request) {
 	// Creates a client and sends a new request.
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", "https://icanhazdadjoke.com/slack", nil)
