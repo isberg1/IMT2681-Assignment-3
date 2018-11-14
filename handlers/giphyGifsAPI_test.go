@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -41,4 +42,5 @@ func Test_getFunnyCatGif(t *testing.T) {
 	if actual == "" {
 		t.Error("handler returned no data")
 	}
+	fmt.Printf(actual)
 }

@@ -1,3 +1,5 @@
+github.com/gomarkdown/markdown v0.0.0-20181104084050-d1d0edeb5d85 h1:C0jjY7t3mKMmf4hXf4tYmc4KOZLx1K0em8kq685+JBM=
+github.com/gomarkdown/markdown v0.0.0-20181104084050-d1d0edeb5d85/go.mod h1:gmFANS06wAVmF0B9yi65QKsRmPQ97tze7FRLswua+OY=
 github.com/gorilla/context v1.1.1 h1:AWwleXJkX/nhcU9bZSnZoi3h/qGYqQAGhq6zZe/aQW8=
 github.com/gorilla/context v1.1.1/go.mod h1:kBGZzfjB9CEq2AlWe17Uuf7NDRt0dE0s8S51q0aT7Yg=
 github.com/gorilla/mux v1.6.2 h1:Pgr17XVTNXAk3q/r4CpKzC5xBM/qW1uVLV+IhRZpIIk=
