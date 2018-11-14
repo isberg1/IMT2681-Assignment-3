@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -9,10 +8,9 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Function to test: GetAPIInfo().
+// Function to test: getFunnyCatGif().
 // Test to check the returned status code, content-type and data for the function.
-func Test_getGif(t *testing.T) {
-
+func Test_getFunnyCatGif(t *testing.T) {
 	// Creates a request that is passed to the handler.
 	request, _ := http.NewRequest("POST", "/dialogflow", nil)
 
@@ -21,7 +19,7 @@ func Test_getGif(t *testing.T) {
 	router := mux.NewRouter()
 
 	// Tests the function.
-	router.HandleFunc("/dialogflow", getGif).Methods("POST")
+	router.HandleFunc("/dialogflow", getFunnyCatGif).Methods("POST")
 	router.ServeHTTP(recorder, request)
 
 	// Check the status code is what we expect (200).
@@ -43,6 +41,4 @@ func Test_getGif(t *testing.T) {
 	if actual == "" {
 		t.Error("handler returned no data")
 	}
-	// Print the joke.
-	fmt.Println(actual)
 }

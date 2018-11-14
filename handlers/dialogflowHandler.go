@@ -58,11 +58,43 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		getChuckNorrisJoke(w, r)
 		// log request
 		postMemory = append(postMemory, string(read))
+
 	case "dad":
 		// Returns a dad joke.
 		getRandomDadJoke(w, r)
 		// log request
 		postMemory = append(postMemory, string(read))
+
+	case "funnyCatGif":
+		// Returns a funny cat gif.
+		getFunnyCatGif(w, r)
+		// log request
+		postMemory = append(postMemory, string(read))
+
+	case "funnyDogGif":
+		// Returns a funny dog gif.
+		getFunnyDogGif(w, r)
+		// log request
+		postMemory = append(postMemory, string(read))
+
+	case "hackerGif":
+		// Returns a hacker gif.
+		getHackerGif(w, r)
+		// log request
+		postMemory = append(postMemory, string(read))
+
+	case "trendingGif":
+		// Returns a random gif.
+		getTrendingGif(w, r)
+		// log request
+		postMemory = append(postMemory, string(read))
+
+	case "randomGif":
+		// Returns a random gif.
+		getRandomGif(w, r)
+		// log request
+		postMemory = append(postMemory, string(read))
+
 	default:
 		http.Error(w, "", http.StatusBadRequest)
 	}

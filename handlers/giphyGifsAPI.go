@@ -24,11 +24,38 @@ type gif struct {
 	Meta       gifMeta                  `json:"meta"`
 }
 
-// Gets a random gif from giphy.
-func getGif(w http.ResponseWriter, r *http.Request) {
-
-	// Should support searching for gifs.
+// Sets the URL for the funny cat gifs and sends it to API function.
+func getFunnyCatGif(w http.ResponseWriter, r *http.Request) {
 	URL := "http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=nZOgnI2vBKhdH5DtG7zZvsdwICp95xO5"
+	getGif(w, r, URL)
+}
+
+// Sets the URL for the funny dog gifs and sends it to API function.
+func getFunnyDogGif(w http.ResponseWriter, r *http.Request) {
+	URL := "http://api.giphy.com/v1/gifs/search?q=funny+dog&api_key=nZOgnI2vBKhdH5DtG7zZvsdwICp95xO5"
+	getGif(w, r, URL)
+}
+
+// Sets the URL for the hacker gifs and sends it to API function.
+func getHackerGif(w http.ResponseWriter, r *http.Request) {
+	URL := "http://api.giphy.com/v1/gifs/search?q=hacker&api_key=nZOgnI2vBKhdH5DtG7zZvsdwICp95xO5"
+	getGif(w, r, URL)
+}
+
+// Sets the URL for the trending gifs and sends it to API function.
+func getTrendingGif(w http.ResponseWriter, r *http.Request) {
+	URL := "http://api.giphy.com/v1/gifs/trending?&api_key=nZOgnI2vBKhdH5DtG7zZvsdwICp95xO5"
+	getGif(w, r, URL)
+}
+
+// Sets the URL for the random gifs and sends it to API function.
+func getRandomGif(w http.ResponseWriter, r *http.Request) {
+	URL := "http://api.giphy.com/v1/gifs/random?&api_key=nZOgnI2vBKhdH5DtG7zZvsdwICp95xO5"
+	getGif(w, r, URL)
+}
+
+// Gets a gif from giphy.
+func getGif(w http.ResponseWriter, r *http.Request, URL string) {
 
 	// Creates a client and sends a new request.
 	client := &http.Client{}
