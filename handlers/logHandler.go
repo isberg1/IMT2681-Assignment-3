@@ -8,6 +8,7 @@ import (
 // the logging entries can possibly be moved to a database
 
 
+
 // stores all log messages
 var logArray []string
 
