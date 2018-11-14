@@ -41,7 +41,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "error reading r.body", 500)
 		logging("error reading r.body")
 		return
-	}
+	}dad
 	// unmarshal json object to string
 	var str DialogflowPostStruct
 	err := json.Unmarshal(read, &str)
@@ -66,7 +66,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		postMemory = append(postMemory, string(read))
 
 	default:
-		http.Error(w, "", http.StatusBadRequest)
+		http.Error(w, "Wrong parameter", http.StatusBadRequest)
 	}
 
 }

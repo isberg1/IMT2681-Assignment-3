@@ -51,6 +51,8 @@ func GetRandomDadJoke(w http.ResponseWriter, r *http.Request) {
 	var joke dadjoke
 	err = json.Unmarshal(output, &joke)
 	if err != nil {
+		http.Error(w, "could not unmarshal json", 500)
+		logging("error could not unmarshal json")
 		return
 	}
 
