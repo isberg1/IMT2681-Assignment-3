@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -20,6 +21,7 @@ import (
       }
     }],
 */
+
 type Para struct {
 	B string `json:"b"`
 }
@@ -93,6 +95,9 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "", http.StatusBadRequest)
 	}
 
+	fmt.Println()
+	Statistic(str.QueryResult.Parameters.B)
+	fmt.Println()
 }
 
 /*
