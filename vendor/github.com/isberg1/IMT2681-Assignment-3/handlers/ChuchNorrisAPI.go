@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 )
 
@@ -37,7 +38,7 @@ func getChuckNorrisJoke(w http.ResponseWriter, r *http.Request)  {
 		logging("error deconding Joke")
 		return
 	}
-
+	fmt.Println(joke.Value)
 	// write response back to dialogflow
 	postToDialogflow(w, joke.Value)
 
