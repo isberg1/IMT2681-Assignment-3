@@ -199,15 +199,22 @@ func getChuckNorrisJoke(w http.ResponseWriter, r *http.Request)  {
 		return
 	}
 
+	// write response back to dialogflow
+	postToDialogflow(w, joke.Value)
+
+
+}
+
+func postToDialogflow(w http.ResponseWriter, jsonString string)  {
 	w.Header().Set("content-type","application/json")
 
 	// make response struct that will be sent back to dialogflow
 
 	var respToDialogflow DialogFlowResponceStruct
-	respToDialogflow.FulfillmentText = joke.Value
+	respToDialogflow.FulfillmentText = jsonString
 
 	var slack SlackMessage
-	slack.Text = joke.Value
+	slack.Text = jsonString
 	var payload PayLoade
 	payload.Slack = slack
 
@@ -215,6 +222,5 @@ func getChuckNorrisJoke(w http.ResponseWriter, r *http.Request)  {
 
 	// write response back to dialogflow
 	json.NewEncoder(w).Encode(respToDialogflow)
-
 
 }
