@@ -58,15 +58,13 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		getChuckNorrisJoke(w, r)
 		// log request
 		postMemory = append(postMemory, string(read))
-
 	case "dad":
 		// Returns a dad joke.
 		GetRandomDadJoke(w, r)
 		// log request
 		postMemory = append(postMemory, string(read))
-
 	default:
-		http.Error(w, "Wrong parameter", http.StatusBadRequest)
+		http.Error(w, "", http.StatusBadRequest)
 	}
 
 }
