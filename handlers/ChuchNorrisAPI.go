@@ -41,7 +41,7 @@ func getChuckNorrisJoke(w http.ResponseWriter, r *http.Request)  {
 	// write response back to dialogflow
 	postToDialogflow(w, joke.Value)
 
-
+	Statistic("chuchNorrisAPI")
 }
 
 

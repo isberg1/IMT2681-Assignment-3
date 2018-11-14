@@ -15,6 +15,7 @@ func main() {
 	r.HandleFunc("/dialogflow",handlers.Dialogflow).Methods("POST")
 	r.HandleFunc("/OldPosts", handlers.OldPosts).Methods("GET")
 	r.HandleFunc("/log", handlers.Log).Methods("GET")
+	//r.HandleFunc("/statistics", handlers.Stats).Methods("GET")
 
 	port := os.Getenv("PORT")
 	if port == "" {
