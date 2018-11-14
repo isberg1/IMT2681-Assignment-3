@@ -1,10 +1,6 @@
 package handlers
 
-import (
-	"fmt"
-	"net/http"
-)
-
+/*
 //Counter used to count nr. of times a API has been used, Warning must be initialized before use
 var teller map[string]int // to be replaced with database
 
@@ -36,3 +32,4 @@ func Statistic(str string)  {
 
 
 }
+*/
