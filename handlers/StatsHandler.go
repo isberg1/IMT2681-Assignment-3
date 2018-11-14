@@ -21,7 +21,7 @@ func Stats(w http.ResponseWriter, r *http.Request) {
 
 	//fmt.Fprintln(w, len(teller))
 
-		if len(teller) < 0 {
+		if len(teller) > 0 {
 
 			for index, valu := range teller {
 				fmt.Fprintln(w, index, valu)
