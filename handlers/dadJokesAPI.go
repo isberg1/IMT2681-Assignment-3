@@ -3,10 +3,18 @@
 package handlers
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"net/http"
 	"strings"
 )
+
+// Struct for dad jokes.
+type dadjoke struct {
+	Attachments  []map[string]interface{} `json:"attachments"`
+	ResponseType string                   `json:"response_type"`
+	Username     string                   `json:"username"`
+}
 
 // GetRandomDadJoke gets a random dad joke as json.
 func GetRandomDadJoke(w http.ResponseWriter, r *http.Request) {
@@ -39,6 +47,13 @@ func GetRandomDadJoke(w http.ResponseWriter, r *http.Request) {
 	// Closes the response body.
 	defer res.Body.Close()
 
+	// Creates a struct and converts json to struct.
+	var joke dadjoke
+	err = json.Unmarshal(output, &joke)
+	if err != nil {
+		return
+	}
+
 	// Chech if the joke was received.
 	if strings.Contains(string(output), "\"status\": 404") {
 		http.Error(w, "could not retrieve joke", 404)
@@ -46,6 +61,9 @@ func GetRandomDadJoke(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Converts interface to string.
+	returnJoke := joke.Attachments[0]["text"].(string)
+
 	// Sends the joke back to dialogflow.
-	postToDialogflow(w, string(output))
+	postToDialogflow(w, returnJoke)
 }
