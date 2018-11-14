@@ -89,12 +89,6 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		// log request
 		postMemory = append(postMemory, string(read))
 
-	case "random gif":
-		// Returns a random gif.
-		getRandomGif(w, r)
-		// log request
-		postMemory = append(postMemory, string(read))
-
 	default:
 		http.Error(w, "", http.StatusBadRequest)
 	}

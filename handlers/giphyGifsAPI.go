@@ -48,12 +48,6 @@ func getTrendingGif(w http.ResponseWriter, r *http.Request) {
 	getGif(w, r, URL)
 }
 
-// Sets the URL for the random gifs and sends it to API function.
-func getRandomGif(w http.ResponseWriter, r *http.Request) {
-	URL := "http://api.giphy.com/v1/gifs/random?&api_key=nZOgnI2vBKhdH5DtG7zZvsdwICp95xO5"
-	getGif(w, r, URL)
-}
-
 // Gets a gif from giphy.
 func getGif(w http.ResponseWriter, r *http.Request, URL string) {
 
