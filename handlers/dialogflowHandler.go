@@ -65,31 +65,31 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		// log request
 		postMemory = append(postMemory, string(read))
 
-	case "funnyCatGif":
+	case "cat gif":
 		// Returns a funny cat gif.
 		getFunnyCatGif(w, r)
 		// log request
 		postMemory = append(postMemory, string(read))
 
-	case "funnyDogGif":
+	case "dog gif":
 		// Returns a funny dog gif.
 		getFunnyDogGif(w, r)
 		// log request
 		postMemory = append(postMemory, string(read))
 
-	case "hackerGif":
+	case "hacker gif":
 		// Returns a hacker gif.
 		getHackerGif(w, r)
 		// log request
 		postMemory = append(postMemory, string(read))
 
-	case "trendingGif":
+	case "trending gif":
 		// Returns a random gif.
 		getTrendingGif(w, r)
 		// log request
 		postMemory = append(postMemory, string(read))
 
-	case "randomGif":
+	case "random gif":
 		// Returns a random gif.
 		getRandomGif(w, r)
 		// log request
