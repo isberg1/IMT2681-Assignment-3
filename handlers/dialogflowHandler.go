@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -21,21 +20,23 @@ import (
       }
     }],
 */
-
+// Para is used for receiving requests form dialogflow
 type Para struct {
 	B string `json:"b"`
 }
+// Querry is used for receiving requests form dialogflow
 type Querry struct {
 	Parameters Para `json:"parameters"`
 }
-
+// DialogflowPostStruct is used for receiving requests form dialogflow
 type DialogflowPostStruct struct {
 	ResponseId      string `json:"responseId"`
 	FulfillmentText string `json:"fulfillmentText"`
 	QueryResult     Querry `json:"queryResult"`
 }
 
-// http POST handler for "/dialogflow"
+// Dialogflow gets json string form POST body from the dialoflow chat-bot,
+// extracts relevant values, then processes the value.
 func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	// read the Post content
 	read, err3 := ioutil.ReadAll(r.Body)
@@ -93,11 +94,12 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 
 	default:
 		http.Error(w, "", http.StatusBadRequest)
+		logging("incorrect value sent to Dialogflow switch case function")
+		return
 	}
 
-	fmt.Println()
+	// register the
 	Statistic(str.QueryResult.Parameters.B)
-	fmt.Println()
 }
 
 /*
@@ -112,19 +114,21 @@ correct jason response to dialogflow for slack
   }
 }
 */
-
+// PayLoade is used to reply to the dialogflow chat-bot
 type PayLoade struct {
 	Slack SlackMessage `json:"slack"`
 }
+// SlackMessage is used to reply to the dialogflow chat-bot
 type SlackMessage struct {
 	Text string `json:"text"`
 }
-
+// DialogFlowResponceStruct is used to reply to the dialogflow chat-bot
 type DialogFlowResponceStruct struct {
 	FulfillmentText string   `json:"fulfillmentText"`
 	Payload         PayLoade `json:"payload"`
 }
-
+// gets a string as a parameter, formats it to the correct dialogflow
+// json format, and sends it back to the dialogflow chat-bot
 func postToDialogflow(w http.ResponseWriter, jsonString string) {
 	w.Header().Set("content-type", "application/json")
 

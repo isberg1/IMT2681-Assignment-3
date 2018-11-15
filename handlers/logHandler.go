@@ -7,12 +7,10 @@ import (
 
 // the logging entries can possibly be moved to a database
 
-
-
 // stores all log messages
 var logArray []string
 
-// displays all log messages
+// Log displays all log messages, used for storing errors, and debugging
 func Log(w http.ResponseWriter, r *http.Request) {
 
 	for _, val:= range logArray{

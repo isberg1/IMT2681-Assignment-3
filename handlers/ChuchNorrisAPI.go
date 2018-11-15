@@ -15,13 +15,15 @@ chuck norris api jason: response
 "value" : "The Mona Lisa is based on a peice of toilet paper used by Chuck Norris."
 }
  */
+ //Chuch struct is used for receiving json strings form Chuch Norris API
 type Chuch struct {
 	Icon_url string `json:"icon_url"`
 	ID string `json:"id"`
 	URL string `json:"url"`
 	Value string `json:"value"`
 }
-
+// gets a Chuch Norris json string, extracts the relevant value from it and
+// sends it to be formatted for dialogflow
 func getChuckNorrisJoke(w http.ResponseWriter, r *http.Request)  {
 
 	res, err1 := http.Get("https://api.chucknorris.io/jokes/random")
@@ -41,7 +43,6 @@ func getChuckNorrisJoke(w http.ResponseWriter, r *http.Request)  {
 	// write response back to dialogflow
 	postToDialogflow(w, joke.Value)
 
-	//Statistic("chuchNorrisAPI")
 }
 
 
