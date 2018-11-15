@@ -12,25 +12,50 @@ Displays this README in html format.
 
 ### dialogflow
 Used by dialogflow to querie this API.    
-Different public APIs are queried based on the POST sent by dialogflow.    
-Example of POST:
+Different public APIs are queried based on the POST sent by dialogflow.
 ```
-temp
+POST /dialogflow Returns a custum API responce based on a parameter "b" in post body
+correct json request:
+
+"queryResult": {
+    "queryText": "joke",
+    "action": "actionAndParameters",
+    "parameters": {
+      "b": "joke"
+    },
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [{
+      "text": {
+        "text": [""]
+      }
+    }],
+    
+acceptable values for parameter b are:
+"joke"    For a chuch Norris Joke
+"dad"     For a dad Joke
+    
+    
 ```
 
 ### log
-temp    
+ Returns all logs of all events that has beed logged(mainly errors)    
 ```
-GET: /log - Returns something
+GET: /log 
 ```
 
 ### Old posts
-Temp
+Returns all API requests preveausly sent to this API
 ```
-GET /OldPosts - Returns something
+GET /OldPosts 
 ```
 
+###  Statistics
+Returns statistics for the different API usage
+```
+GET /statistics 
+```
 ***
+
 
 ## How this app is deployed
  * The app runs in Heroku at https://warm-meadow-53471.herokuapp.com/
