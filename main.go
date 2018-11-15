@@ -6,13 +6,6 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/isberg1/IMT2681-Assignment-3/handlers"
-	mgo "gopkg.in/mgo.v2"
-)
-
-var db *mgo.Database
-
-const (
-	COLLECTION = "dogs"
 )
 
 var AS = AnimalShelter{
@@ -23,7 +16,7 @@ var AS = AnimalShelter{
 }
 
 func main() {
-	AS.Connect()
+	AS.databse.Connect()
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", handlers.Frontpage).Methods("GET")
