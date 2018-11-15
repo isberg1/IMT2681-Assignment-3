@@ -33,30 +33,30 @@ func Connect() {
 	db = connection.DB(os.Getenv("MONGO_DATABASE"))
 }
 
-func (m *AnimalShelter) Insert(dog Dog) error {
+func Insert(dog Dog) error {
 	err := db.C(COLLECTION).Insert(&dog)
 	return err
 }
 
-func (m *AnimalShelter) FindOldestDog() (Dog, error) {
+func FindOldestDog() (Dog, error) {
 	var dog Dog
 	err := db.C(COLLECTION).Find(nil).Sort("_id").One(&dog)
 	return dog, err
 }
 
-func (m *AnimalShelter) DeleteDogWithId(id string) (Dog, error) {
+func DeleteDogWithId(id string) (Dog, error) {
 	var dog Dog
 	err := db.C(COLLECTION).FindId(bson.ObjectIdHex(id)).One(&dog)
 	err = db.C(COLLECTION).RemoveId(bson.ObjectIdHex(id))
 	return dog, err
 }
 
-func (m *AnimalShelter) FindCount() (int, error) {
+func FindCount() (int, error) {
 	trackCount, err := db.C(COLLECTION).Count()
 	return trackCount, err
 }
 
-func (m *AnimalShelter) FindAll() ([]Dog, error) {
+func FindAll() ([]Dog, error) {
 	fmt.Println("Trying to find all")
 	var dogs []Dog
 	// Using the nil parameter in find gets all tracks
@@ -64,7 +64,7 @@ func (m *AnimalShelter) FindAll() ([]Dog, error) {
 	return dogs, err
 }
 
-func (m *AnimalShelter) DeleteAll() (*mgo.ChangeInfo, error) {
+func DeleteAll() (*mgo.ChangeInfo, error) {
 	rem, err := db.C(COLLECTION).RemoveAll(nil)
 	return rem, err
 }
