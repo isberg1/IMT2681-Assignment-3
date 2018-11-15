@@ -9,6 +9,12 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
+var db *mgo.Database
+
+const (
+	COLLECTION = "dogs"
+)
+
 func (m *AnimalShelter) Connect() {
 	session := &mgo.DialInfo{
 		Addrs:    []string{m.Address},
