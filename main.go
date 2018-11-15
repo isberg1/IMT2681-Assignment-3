@@ -1,14 +1,29 @@
 package main
 
 import (
-	"github.com/gorilla/mux"
-	"github.com/isberg1/IMT2681-Assignment-3/handlers"
 	"net/http"
 	"os"
+
+	"github.com/gorilla/mux"
+	"github.com/isberg1/IMT2681-Assignment-3/handlers"
+	mgo "gopkg.in/mgo.v2"
 )
 
-func main() {
+var db *mgo.Database
 
+const (
+	COLLECTION = "dogs"
+)
+
+var AS = AnimalShelter{
+	Address:  os.Getenv("MONGO_ADDRESS"),
+	Database: os.Getenv("MONGO_DATABASE"),
+	Username: os.Getenv("MONGO_USER"),
+	Password: os.Getenv("MONGO_PASSWORD"),
+}
+
+func main() {
+	AS.Connect()
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", handlers.Frontpage).Methods("GET")
