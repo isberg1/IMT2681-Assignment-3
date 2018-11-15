@@ -24,10 +24,12 @@ import (
 type Para struct {
 	B string `json:"b"`
 }
+
 // Querry is used for receiving requests form dialogflow
 type Querry struct {
 	Parameters Para `json:"parameters"`
 }
+
 // DialogflowPostStruct is used for receiving requests form dialogflow
 type DialogflowPostStruct struct {
 	ResponseId      string `json:"responseId"`
@@ -59,38 +61,26 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	case "joke":
 		// return a chuch norris joke
 		getChuckNorrisJoke(w, r)
-		// log request
-		postMemory = append(postMemory, string(read))
 
 	case "dad":
 		// Returns a dad joke.
 		getRandomDadJoke(w, r)
-		// log request
-		postMemory = append(postMemory, string(read))
 
 	case "cat gif":
 		// Returns a funny cat gif.
 		getFunnyCatGif(w, r)
-		// log request
-		postMemory = append(postMemory, string(read))
 
 	case "dog gif":
 		// Returns a funny dog gif.
 		getFunnyDogGif(w, r)
-		// log request
-		postMemory = append(postMemory, string(read))
 
 	case "hacker gif":
 		// Returns a hacker gif.
 		getHackerGif(w, r)
-		// log request
-		postMemory = append(postMemory, string(read))
 
 	case "trending gif":
 		// Returns a random gif.
 		getTrendingGif(w, r)
-		// log request
-		postMemory = append(postMemory, string(read))
 
 	default:
 		http.Error(w, "", http.StatusBadRequest)
@@ -100,6 +90,9 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 
 	// register the
 	Statistic(str.QueryResult.Parameters.B)
+
+	// log request
+	postMemory = append(postMemory, string(read))
 }
 
 /*
@@ -118,15 +111,18 @@ correct jason response to dialogflow for slack
 type PayLoade struct {
 	Slack SlackMessage `json:"slack"`
 }
+
 // SlackMessage is used to reply to the dialogflow chat-bot
 type SlackMessage struct {
 	Text string `json:"text"`
 }
+
 // DialogFlowResponceStruct is used to reply to the dialogflow chat-bot
 type DialogFlowResponceStruct struct {
 	FulfillmentText string   `json:"fulfillmentText"`
 	Payload         PayLoade `json:"payload"`
 }
+
 // gets a string as a parameter, formats it to the correct dialogflow
 // json format, and sends it back to the dialogflow chat-bot
 func postToDialogflow(w http.ResponseWriter, jsonString string) {
