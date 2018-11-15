@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	mgo "gopkg.in/mgo.v2"
@@ -15,13 +16,13 @@ const (
 	COLLECTION = "dogs"
 )
 
-func (m *AnimalShelter) Connect() {
+func Connect() {
 	session := &mgo.DialInfo{
-		Addrs:    []string{m.Address},
+		Addrs:    []string{os.Getenv("MONGO_ADDRESS")},
 		Timeout:  60 * time.Second,
-		Database: m.Database,
-		Username: m.Username,
-		Password: m.Password,
+		Database: os.Getenv("MONGO_DATABASE"),
+		Username: os.Getenv("MONGO_USER"),
+		Password: os.Getenv("MONGO_PASSWORD"),
 	}
 
 	connection, err := mgo.DialWithInfo(session)

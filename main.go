@@ -8,15 +8,8 @@ import (
 	"github.com/isberg1/IMT2681-Assignment-3/handlers"
 )
 
-var AS = AnimalShelter{
-	Address:  os.Getenv("MONGO_ADDRESS"),
-	Database: os.Getenv("MONGO_DATABASE"),
-	Username: os.Getenv("MONGO_USER"),
-	Password: os.Getenv("MONGO_PASSWORD"),
-}
-
 func main() {
-	AS.databse.Connect()
+	database.Connect()
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", handlers.Frontpage).Methods("GET")
