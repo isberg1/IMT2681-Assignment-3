@@ -30,7 +30,7 @@ func Connect() {
 		fmt.Println("Could not connect to DB")
 		log.Fatal(err)
 	}
-	db = connection.DB(m.Database)
+	db = connection.DB(os.Getenv("MONGO_DATABASE"))
 }
 
 func (m *AnimalShelter) Insert(dog Dog) error {
