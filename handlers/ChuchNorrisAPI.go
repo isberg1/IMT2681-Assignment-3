@@ -31,6 +31,8 @@ func getChuckNorrisJoke(w http.ResponseWriter, r *http.Request)  {
 		http.Error(w, "error form chuchnorris api", 500)
 		logging("error form chuchnorris api")
 		return
+	} else {
+		defer res.Body.Close()
 	}
 	var joke Chuch
 	err2 := json.NewDecoder(res.Body).Decode(&joke)
