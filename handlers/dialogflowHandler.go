@@ -81,6 +81,9 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	case "trending gif":
 		// Returns a random gif.
 		getTrendingGif(w, r)
+	case "show dog"
+		// Shows a random picture of a dog
+		ShowDog(w,r)
 
 	default:
 		http.Error(w, "", http.StatusBadRequest)
