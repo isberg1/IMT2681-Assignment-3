@@ -11,14 +11,11 @@ import (
 )
 
 // online test returns correct result, but reports 0 % test courage
-func Test_getChuckNorrisJoke(t *testing.T)  {
+func Test_GetChuckNorrisJoke(t *testing.T) {
 
-
-
-	contentType:="application/json"
-	querry := Querry{Para{B:"joke"}}
-	strc :=  DialogflowPostStruct{ResponseId:"testid",FulfillmentText: "joke",QueryResult:querry}
-
+	contentType := "application/json"
+	querry := Querry{Para{B: "joke"}}
+	strc := DialogflowPostStruct{ResponseId: "testid", FulfillmentText: "joke", QueryResult: querry}
 
 	str, err := json.Marshal(strc)
 	if err != nil {
@@ -52,8 +49,6 @@ func Test_getChuckNorrisJoke(t *testing.T)  {
 			content, contentType)
 	}
 
-
-
 	var responseStruct DialogFlowResponceStruct
 
 	err3 := json.NewDecoder(recorder.Body).Decode(&responseStruct)
@@ -66,6 +61,5 @@ func Test_getChuckNorrisJoke(t *testing.T)  {
 	}
 
 	fmt.Println(responseStruct.FulfillmentText)
-
 
 }

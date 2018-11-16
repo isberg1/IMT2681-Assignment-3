@@ -60,36 +60,41 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	switch str.QueryResult.Parameters.B {
 	case "joke":
 		// return a chuch norris joke
-		getChuckNorrisJoke(w, r)
+		GetChuckNorrisJoke(w, r)
 
 	case "dad":
 		// Returns a dad joke.
-		getRandomDadJoke(w, r)
+		GetRandomDadJoke(w, r)
 
 	case "cat gif":
 		// Returns a funny cat gif.
-		getFunnyCatGif(w, r)
+		GetFunnyCatGif(w, r)
 
 	case "dog gif":
 		// Returns a funny dog gif.
-		getFunnyDogGif(w, r)
+		GetFunnyDogGif(w, r)
 
 	case "hacker gif":
 		// Returns a hacker gif.
-		getHackerGif(w, r)
+		GetHackerGif(w, r)
 
 	case "trending gif":
-		// Returns a random gif.
-		getTrendingGif(w, r)
+		// Returns a trending gif.
+		GetTrendingGif(w, r)
+
 	case "show dog":
 		// Shows a random picture of a dog
 		ShowDog(w, r)
+
 	case "add dog":
 		AddDog(w, r)
+
 	case "adopt":
 		AdoptDog(w, r)
+
 	case "how many":
 		getCount(w, r)
+
 	case "show all":
 		ShowAllDogs(w, r)
 

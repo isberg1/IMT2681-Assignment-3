@@ -10,9 +10,9 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Function to test: getFunnyCatGif().
+// Function to test: GetFunnyCatGif().
 // Test to check the returned status code, content-type and data for the function.
-func Test_getFunnyCatGif(t *testing.T) {
+func Test_GetFunnyCatGif(t *testing.T) {
 	// Creates a request that is passed to the handler.
 	request, _ := http.NewRequest("POST", "/dialogflow", nil)
 
@@ -21,7 +21,7 @@ func Test_getFunnyCatGif(t *testing.T) {
 	router := mux.NewRouter()
 
 	// Tests the function.
-	router.HandleFunc("/dialogflow", getFunnyCatGif).Methods("POST")
+	router.HandleFunc("/dialogflow", GetFunnyCatGif).Methods("POST")
 	router.ServeHTTP(recorder, request)
 
 	// Check the status code is what we expect (200).
@@ -45,9 +45,9 @@ func Test_getFunnyCatGif(t *testing.T) {
 	}
 }
 
-// Function to test: getFunnyDogGif().
+// Function to test: GetFunnyDogGif().
 // Test to check the returned status code, content-type and data for the function.
-func Test_getFunnyDogGif(t *testing.T) {
+func Test_GetFunnyDogGif(t *testing.T) {
 	// Creates a request that is passed to the handler.
 	request, _ := http.NewRequest("POST", "/dialogflow", nil)
 
@@ -56,7 +56,7 @@ func Test_getFunnyDogGif(t *testing.T) {
 	router := mux.NewRouter()
 
 	// Tests the function.
-	router.HandleFunc("/dialogflow", getFunnyDogGif).Methods("POST")
+	router.HandleFunc("/dialogflow", GetFunnyDogGif).Methods("POST")
 	router.ServeHTTP(recorder, request)
 
 	// Check the status code is what we expect (200).
@@ -80,9 +80,9 @@ func Test_getFunnyDogGif(t *testing.T) {
 	}
 }
 
-// Function to test: getHackerGif().
+// Function to test: GetHackerGif().
 // Test to check the returned status code, content-type and data for the function.
-func Test_getHackerGif(t *testing.T) {
+func Test_GetHackerGif(t *testing.T) {
 	// Creates a request that is passed to the handler.
 	request, _ := http.NewRequest("POST", "/dialogflow", nil)
 
@@ -91,7 +91,7 @@ func Test_getHackerGif(t *testing.T) {
 	router := mux.NewRouter()
 
 	// Tests the function.
-	router.HandleFunc("/dialogflow", getHackerGif).Methods("POST")
+	router.HandleFunc("/dialogflow", GetHackerGif).Methods("POST")
 	router.ServeHTTP(recorder, request)
 
 	// Check the status code is what we expect (200).
@@ -115,9 +115,9 @@ func Test_getHackerGif(t *testing.T) {
 	}
 }
 
-// Function to test: getTrendingGif().
+// Function to test: GetTrendingGif().
 // Test to check the returned status code, content-type and data for the function.
-func Test_getTrendingGif(t *testing.T) {
+func Test_GetTrendingGif(t *testing.T) {
 	// Creates a request that is passed to the handler.
 	request, _ := http.NewRequest("POST", "/dialogflow", nil)
 
@@ -126,7 +126,7 @@ func Test_getTrendingGif(t *testing.T) {
 	router := mux.NewRouter()
 
 	// Tests the function.
-	router.HandleFunc("/dialogflow", getTrendingGif).Methods("POST")
+	router.HandleFunc("/dialogflow", GetTrendingGif).Methods("POST")
 	router.ServeHTTP(recorder, request)
 
 	// Check the status code is what we expect (200).

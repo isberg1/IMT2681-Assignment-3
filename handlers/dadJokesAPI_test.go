@@ -10,9 +10,9 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Function to test: getRandomDadJoke().
+// Function to test: GetRandomDadJoke().
 // Test to check the returned status code, content-type and data for the function.
-func Test_getRandomDadJoke(t *testing.T) {
+func Test_GetRandomDadJoke(t *testing.T) {
 	// Creates a request that is passed to the handler.
 	request, _ := http.NewRequest("POST", "/dialogflow", nil)
 
@@ -21,7 +21,7 @@ func Test_getRandomDadJoke(t *testing.T) {
 	router := mux.NewRouter()
 
 	// Tests the function.
-	router.HandleFunc("/dialogflow", getRandomDadJoke).Methods("POST")
+	router.HandleFunc("/dialogflow", GetRandomDadJoke).Methods("POST")
 	router.ServeHTTP(recorder, request)
 
 	// Check the status code is what we expect (200).
