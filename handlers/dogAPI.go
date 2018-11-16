@@ -108,8 +108,12 @@ func ShowAllDogs(w http.ResponseWriter, r *http.Request) {
 		postToDialogflow(w, "No dogs in shelter")
 	}
 
+	var returnString string
+
 	for i := 0; i < len(dogs); i++ {
-		postToDialogflow(w, dogs[i].Picture)
+		returnString = strings.Join([]string{dogs[i].Picture}, "")
 	}
+
+	postToDialogflow(w, returnString)
 
 }
