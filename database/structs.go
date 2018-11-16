@@ -13,3 +13,9 @@ type Dog struct {
 	ID      bson.ObjectId `bson:"_id"`
 	Picture string        `bson:"picture" json:"picture"`
 }
+
+type Statistics struct {
+	ID        bson.ObjectId `bson:"_id"`
+	Timestamp int64         `bson:"timestamp json:"timestamp`
+	Text      string        `bson:"text"	json"text"`
+}

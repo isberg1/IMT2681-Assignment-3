@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	// Connects to the mongoDB, for the moment hosted in mLabs
 	database.Connect()
 	r := mux.NewRouter()
 
