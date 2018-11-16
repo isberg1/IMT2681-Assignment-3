@@ -91,7 +91,7 @@ func AdoptDog(w http.ResponseWriter, r *http.Request) {
 }
 
 func getCount(w http.ResponseWriter, r *http.Request) {
-	dogCount, err := database.FindCount()
+	dogCount, err := database.FindCount("dogs")
 	if err != nil {
 		postToDialogflow(w, "No Dogs in shelter")
 	}

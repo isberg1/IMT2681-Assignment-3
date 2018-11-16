@@ -14,6 +14,8 @@ var db *mgo.Database
 
 const (
 	COLLECTION = "dogs"
+	LOG        = "log"
+	STAT       = "statistics"
 )
 
 func Connect() {
@@ -51,8 +53,8 @@ func DeleteDogWithId(id string) (Dog, error) {
 	return dog, err
 }
 
-func FindCount() (int, error) {
-	trackCount, err := db.C(COLLECTION).Count()
+func FindCount(coll string) (int, error) {
+	trackCount, err := db.C(coll).Count()
 	return trackCount, err
 }
 
