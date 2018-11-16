@@ -86,11 +86,11 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		ShowDog(w, r)
 	case "add dog":
 		AddDog(w, r)
-	case "adopt dog":
+	case "adopt":
 		AdoptDog(w, r)
-	case "dog count":
+	case "how many":
 		getCount(w, r)
-	case "show all dogs":
+	case "show all":
 		ShowAllDogs(w, r)
 
 	default:
