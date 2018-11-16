@@ -90,14 +90,25 @@ func Statistic(str string) {
 		// If there is already and existing stat object, take it out and update it's values
 	} else {
 		// Gets the stat object from the database
-		stat, err := database.GetStatObject()
+
+		stats, err := database.QueryForStats()
 		if err != nil {
 			logging(err.Error())
+		}
+
+		var currObj string
+		var howMany string
+		// Puts the command field of every object into an array
+		for i := 0; i < len(stats); i++ {
+			if str == stats[i].Command {
+				currObj = stats[i].Command
+				howMany = stats[i].Visitors
+				break
+			}
 		}
 		// Generates a new timestamp to update
 		newTimeStamp := time.Now().UnixNano() / int64(time.Millisecond)
 		// Gets the visitors value, converts it to int to add 1, then converts it back to string to update
-		howMany := stat.Visitors
 		HM, err := strconv.Atoi(howMany)
 		if err != nil {
 			logging(err.Error())
@@ -105,7 +116,7 @@ func Statistic(str string) {
 		newVisitors := HM + 1
 		newVisitorss := strconv.Itoa(newVisitors)
 		// Updates the object in the database
-		database.UpdateStats("cat gif", newTimeStamp, newVisitorss)
+		database.UpdateStats(currObj, newTimeStamp, newVisitorss)
 	}
 
 }
