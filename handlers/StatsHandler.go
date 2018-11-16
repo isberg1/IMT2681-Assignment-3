@@ -105,7 +105,7 @@ func Statistic(str string) {
 		newVisitors := HM + 1
 		newVisitorss := strconv.Itoa(newVisitors)
 		// Updates the object in the database
-		database.UpdateStats(stat.Command, newTimeStamp, newVisitorss)
+		database.UpdateStats("cat gif", newTimeStamp, newVisitorss)
 	}
 
 }
