@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
-	"github.com/isberg1/IMT2681-Assignment-3/database"
 	"github.com/isberg1/IMT2681-Assignment-3/handlers"
 )
 
