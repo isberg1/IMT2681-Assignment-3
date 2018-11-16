@@ -55,7 +55,7 @@ func AddDog(w http.ResponseWriter, r *http.Request) {
 	err = json.NewDecoder(resp.Body).Decode(dog)
 	if err != nil {
 		fmt.Println("Error decoding json")
-		panic(err)
+		logging(err.Error())
 	}
 
 	dogg := database.Dog{

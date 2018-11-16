@@ -84,6 +84,14 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	case "show dog":
 		// Shows a random picture of a dog
 		ShowDog(w, r)
+	case "add dog":
+		AddDog(w, r)
+	case "adopt dog":
+		AdoptDog(w, r)
+	case "dog count":
+		getCount(w, r)
+	case "show all dogs":
+		ShowAllDogs(w, r)
 
 	default:
 		http.Error(w, "", http.StatusBadRequest)
