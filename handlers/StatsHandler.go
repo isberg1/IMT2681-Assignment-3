@@ -31,13 +31,14 @@ func Stats(w http.ResponseWriter, r *http.Request) {
 	for i := 0; i < len(stats); i++ {
 		outPutString = strings.Join([]string{
 			outPutString,
-			"Command: ", stats[i].Command, "\n",
-			"Times used: ", stats[i].Visitors, "\n",
-			"Last used: ", strconv.Itoa(int(stats[i].Timestamp)), "\n"},
-			"")
+			"Command: ", stats[i].Command, "\t",
+			"Times used: ", stats[i].Visitors, "\n"},
+			"\n")
 	}
 	fmt.Fprintln(w, outPutString)
-
+	/*
+		"Last used: ", strconv.Itoa(int(stats[i].Timestamp)), "\n"},
+	*/
 }
 
 // Statistic counts the nr of times a given API has been called
