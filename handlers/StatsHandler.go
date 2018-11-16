@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/isberg1/IMT2681-Assignment-3/database"
@@ -25,18 +26,16 @@ func Stats(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		logging(err.Error())
 	}
+	var outPutString string
 
 	fmt.Fprintln(w, stats)
-	// explains this sites functionality
-	fmt.Fprintln(w, "get counter for /stat ")
-
-	// print statistic for all the different API calls
-	for index, valu := range teller {
-		fmt.Fprintln(w, index, valu)
-	}
-	// if no API call has been called display message
-	if len(teller) == 0 {
-		fmt.Fprintln(w, "no API has been used ")
+	for i := 0; i < len(stats); i++ {
+		outPutString = strings.Join([]string{
+			outPutString,
+			"Command: ", stats[i].Command, "\n",
+			"Times used: ", stats[i].Visitors, "\n",
+			"Last used: ", strconv.Itoa(int(stats[i].Timestamp)), "\n"},
+			"")
 	}
 
 }
