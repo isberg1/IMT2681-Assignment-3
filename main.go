@@ -14,7 +14,7 @@ func main() {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", handlers.Frontpage).Methods("GET")
-	r.HandleFunc("Dialogflow", handlers.Dialogflow).Methods("POST")
+	r.HandleFunc("/dialogflow", handlers.Dialogflow).Methods("POST")
 	r.HandleFunc("/OldPosts", handlers.OldPosts).Methods("GET")
 	r.HandleFunc("/log", handlers.Log).Methods("GET")
 	r.HandleFunc("/statistics", handlers.Stats).Methods("GET")
