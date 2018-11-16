@@ -7,6 +7,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/isberg1/IMT2681-Assignment-3/database"
 	"github.com/isberg1/IMT2681-Assignment-3/handlers"
+	"github.com/isberg1/IMT2681-Assignment-3/website"
 )
 
 func main() {
@@ -19,6 +20,7 @@ func main() {
 	r.HandleFunc("/OldPosts", handlers.OldPosts).Methods("GET")
 	r.HandleFunc("/log", handlers.Log).Methods("GET")
 	r.HandleFunc("/statistics", handlers.Stats).Methods("GET")
+	r.HandleFunc("/website", website.TestingWebsite).Methods("GET")
 
 	port := os.Getenv("PORT")
 	if port == "" {
