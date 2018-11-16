@@ -16,7 +16,7 @@ type Dog struct {
 
 type Statistics struct {
 	ID        bson.ObjectId `bson:"_id"`
-	Timestamp int64         `bson:"timestamp json:"timestamp`
+	Timestamp int64         `bson:"timestamp" json:"timestamp"`
 	Command   string        `bson:"command" json:"command"`
 	Visitors  string        `bson:"visitors"	json"visitors"`
 }
