@@ -56,7 +56,7 @@ func GetStatObject() (Statistics, error) {
 	return stat, err
 }
 
-func QueryForStats(command string) ([]Statistics, error) {
+func QueryForStats() ([]Statistics, error) {
 	var stats []Statistics
 	// Using the nil parameter in find gets all tracks
 	err := db.C(STAT).Find(nil).All(&stats)

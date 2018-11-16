@@ -21,6 +21,12 @@ func init() {
 // Stats displays the count usage for each type of API request
 func Stats(w http.ResponseWriter, r *http.Request) {
 
+	stats, err := database.QueryForStats()
+	if err != nil {
+		logging(err.Error())
+	}
+
+	fmt.Fprintln(w, stats)
 	// explains this sites functionality
 	fmt.Fprintln(w, "get counter for /stat ")
 
@@ -42,7 +48,7 @@ func Statistic(str string) {
 	// it to work and therefore had to cheese it.
 
 	//Returns all the objects in the database
-	stats, err := database.QueryForStats(str)
+	stats, err := database.QueryForStats()
 	if err != nil {
 		logging(err.Error())
 	}
