@@ -28,7 +28,6 @@ func Stats(w http.ResponseWriter, r *http.Request) {
 	}
 	var outPutString string
 
-	fmt.Fprintln(w, stats)
 	for i := 0; i < len(stats); i++ {
 		outPutString = strings.Join([]string{
 			outPutString,
@@ -37,6 +36,7 @@ func Stats(w http.ResponseWriter, r *http.Request) {
 			"Last used: ", strconv.Itoa(int(stats[i].Timestamp)), "\n"},
 			"")
 	}
+	fmt.Fprintln(w, outPutString)
 
 }
 
