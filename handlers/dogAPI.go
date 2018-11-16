@@ -22,7 +22,7 @@ func ShowDog(w http.ResponseWriter, r *http.Request) {
 	resp, err := http.Get("https://dog.ceo/api/breeds/image/random")
 	if err != nil {
 		fmt.Printf("Got no dog")
-		panic(err)
+		logging(err.Error())
 	}
 
 	//fmt.Println(resp.Body)
@@ -33,7 +33,7 @@ func ShowDog(w http.ResponseWriter, r *http.Request) {
 	err = json.NewDecoder(resp.Body).Decode(dog)
 	if err != nil {
 		fmt.Println("Error decoding json")
-		panic(err)
+		logging(err.Error())
 	}
 	// Send the resoponse to dialogflow
 	postToDialogflow(w, dog.Message)
@@ -52,7 +52,7 @@ func AddDog(w http.ResponseWriter, r *http.Request) {
 	resp, err := http.Get("https://dog.ceo/api/breeds/image/random")
 	if err != nil {
 		fmt.Printf("Got no dog")
-		panic(err)
+		logging(err.Error())
 	}
 
 	//fmt.Println(resp.Body)
@@ -75,7 +75,7 @@ func AddDog(w http.ResponseWriter, r *http.Request) {
 	// Tries to insert a new object into the database
 	if err := database.Insert(dogg); err != nil {
 		fmt.Println("Error inserting new dog")
-		panic(err)
+		logging(err.Error())
 	}
 
 	// Creates a string, and sends it to dialogflow as a response to the user
@@ -92,13 +92,13 @@ func AdoptDog(w http.ResponseWriter, r *http.Request) {
 	dog, err := database.FindOldestDog()
 	if err != nil {
 		fmt.Println("Could not find latest")
-		panic(err)
+		logging(err.Error())
 	}
 	// Removes the dog object from the database based on ID
 	dog, err = database.DeleteDogWithId(dog.ID.Hex())
 	if err != nil {
 		fmt.Println("Coult not delete dog")
-		panic(err)
+		logging(err.Error())
 	}
 
 	// Returns a picture of the dog deleted from the database

@@ -48,6 +48,28 @@ func InsertStatistics(stat Statistics) error {
 	return err
 }
 
+// The stats database is supposed to only contain one object,
+//therefore one can assume that no sorting or query method is required.
+func GetStatObject() (Statistics, error) {
+	var stat Statistics
+	err := db.C(STAT).Find(nil).One(&stat)
+	return stat, err
+}
+
+func QueryForStats(command string) ([]Statistics, error) {
+	var stats []Statistics
+	// Using the nil parameter in find gets all tracks
+	err := db.C(STAT).Find(nil).All(&stats)
+	return stats, err
+}
+
+//Updates the stat object with the new values sent.
+// usin bson.M to find the right object to update based on ID, then to find the right value to update.
+func UpdateStats(command string, timestamp int64, visitors string) {
+	db.C(STAT).Update(bson.M{"command": command}, bson.M{"$set": bson.M{"timestamp": timestamp}})
+	db.C(STAT).Update(bson.M{"command": command}, bson.M{"$set": bson.M{"visitors": visitors}})
+}
+
 // Finds the oldest dog by sorting by id and taking the first
 func FindOldestDog() (Dog, error) {
 	var dog Dog
