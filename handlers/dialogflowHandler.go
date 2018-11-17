@@ -93,7 +93,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		AdoptDog(w, r)
 
 	case "how many":
-		getCount(w, r)
+		GetCount(w, r)
 
 	case "show all":
 		ShowAllDogs(w, r)

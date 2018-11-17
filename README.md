@@ -57,10 +57,8 @@ GET: /statistics
 ```
 
 ### Website
-A website where you can test the available APIs we have.
-```
-GET: /website.html
-```
+A website where you can test the available APIs we have.    
+[Link](https://warm-meadow-53471.herokuapp.com/website.html)
 
 ***
 

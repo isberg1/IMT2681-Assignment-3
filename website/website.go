@@ -34,12 +34,12 @@ func testChuckNorrisJoke() string {
 	router.ServeHTTP(recorder, request)
 
 	// Gets the respond.
-	var joke map[string]string
+	var returnedText map[string]string
 	output := recorder.Body.Bytes()
-	json.Unmarshal(output, &joke)
+	json.Unmarshal(output, &returnedText)
 
-	// Returns the joke.
-	return joke["fulfillmentText"]
+	// Returns the text.
+	return returnedText["fulfillmentText"]
 }
 
 // Function to test the dad joke.
@@ -56,12 +56,12 @@ func testDadJoke() string {
 	router.ServeHTTP(recorder, request)
 
 	// Gets the respond.
-	var joke map[string]string
+	var returnedText map[string]string
 	output := recorder.Body.Bytes()
-	json.Unmarshal(output, &joke)
+	json.Unmarshal(output, &returnedText)
 
-	// Returns the joke.
-	return joke["fulfillmentText"]
+	// Returns the text.
+	return returnedText["fulfillmentText"]
 }
 
 // Function to test the cat gif.
@@ -78,12 +78,12 @@ func testCatGif() string {
 	router.ServeHTTP(recorder, request)
 
 	// Gets the respond.
-	var joke map[string]string
+	var returnedText map[string]string
 	output := recorder.Body.Bytes()
-	json.Unmarshal(output, &joke)
+	json.Unmarshal(output, &returnedText)
 
-	// Returns the joke.
-	return joke["fulfillmentText"]
+	// Returns the text.
+	return returnedText["fulfillmentText"]
 }
 
 // Function to test the dog gif.
@@ -100,12 +100,12 @@ func testDogGif() string {
 	router.ServeHTTP(recorder, request)
 
 	// Gets the respond.
-	var joke map[string]string
+	var returnedText map[string]string
 	output := recorder.Body.Bytes()
-	json.Unmarshal(output, &joke)
+	json.Unmarshal(output, &returnedText)
 
-	// Returns the joke.
-	return joke["fulfillmentText"]
+	// Returns the text.
+	return returnedText["fulfillmentText"]
 }
 
 // Function to test the hacker gif.
@@ -122,12 +122,12 @@ func testHackerGif() string {
 	router.ServeHTTP(recorder, request)
 
 	// Gets the respond.
-	var joke map[string]string
+	var returnedText map[string]string
 	output := recorder.Body.Bytes()
-	json.Unmarshal(output, &joke)
+	json.Unmarshal(output, &returnedText)
 
-	// Returns the joke.
-	return joke["fulfillmentText"]
+	// Returns the text.
+	return returnedText["fulfillmentText"]
 }
 
 // Function to test the trending gif.
@@ -144,12 +144,122 @@ func testTrendingGif() string {
 	router.ServeHTTP(recorder, request)
 
 	// Gets the respond.
-	var joke map[string]string
+	var returnedText map[string]string
 	output := recorder.Body.Bytes()
-	json.Unmarshal(output, &joke)
+	json.Unmarshal(output, &returnedText)
 
-	// Returns the joke.
-	return joke["fulfillmentText"]
+	// Returns the text.
+	return returnedText["fulfillmentText"]
+}
+
+// Function to test the show dog from animal shelter.
+func testShowDog() string {
+	// Creates a request that is passed to the handler.
+	request, _ := http.NewRequest("POST", "/dialogflow", nil)
+
+	// Creates the temporary recorder.
+	recorder := httptest.NewRecorder()
+	router := mux.NewRouter()
+
+	// Sends the request internally.
+	router.HandleFunc("/dialogflow", handlers.ShowDog).Methods("POST")
+	router.ServeHTTP(recorder, request)
+
+	// Gets the respond.
+	var returnedText map[string]string
+	output := recorder.Body.Bytes()
+	json.Unmarshal(output, &returnedText)
+
+	// Returns the text.
+	return returnedText["fulfillmentText"]
+}
+
+// Function to test the add dog from animal shelter.
+func testAddDog() string {
+	// Creates a request that is passed to the handler.
+	request, _ := http.NewRequest("POST", "/dialogflow", nil)
+
+	// Creates the temporary recorder.
+	recorder := httptest.NewRecorder()
+	router := mux.NewRouter()
+
+	// Sends the request internally.
+	router.HandleFunc("/dialogflow", handlers.AddDog).Methods("POST")
+	router.ServeHTTP(recorder, request)
+
+	// Gets the respond.
+	var returnedText map[string]string
+	output := recorder.Body.Bytes()
+	json.Unmarshal(output, &returnedText)
+
+	// Returns the text.
+	return returnedText["fulfillmentText"]
+}
+
+// Function to test the addopt dog from animal shelter.
+func testAddoptDog() string {
+	// Creates a request that is passed to the handler.
+	request, _ := http.NewRequest("POST", "/dialogflow", nil)
+
+	// Creates the temporary recorder.
+	recorder := httptest.NewRecorder()
+	router := mux.NewRouter()
+
+	// Sends the request internally.
+	router.HandleFunc("/dialogflow", handlers.AdoptDog).Methods("POST")
+	router.ServeHTTP(recorder, request)
+
+	// Gets the respond.
+	var returnedText map[string]string
+	output := recorder.Body.Bytes()
+	json.Unmarshal(output, &returnedText)
+
+	// Returns the text.
+	return returnedText["fulfillmentText"]
+}
+
+// Function to test the how many dog from animal shelter.
+func testHowManyDogs() string {
+	// Creates a request that is passed to the handler.
+	request, _ := http.NewRequest("POST", "/dialogflow", nil)
+
+	// Creates the temporary recorder.
+	recorder := httptest.NewRecorder()
+	router := mux.NewRouter()
+
+	// Sends the request internally.
+	router.HandleFunc("/dialogflow", handlers.GetCount).Methods("POST")
+	router.ServeHTTP(recorder, request)
+
+	// Gets the respond.
+	var returnedText map[string]string
+	output := recorder.Body.Bytes()
+	json.Unmarshal(output, &returnedText)
+
+	// Returns the text.
+	return returnedText["fulfillmentText"]
+}
+
+// Function to test the show all dogs from animal shelter.
+func testShowAllDogs() string {
+	// Creates a request that is passed to the handler.
+	request, _ := http.NewRequest("POST", "/dialogflow", nil)
+
+	// Creates the temporary recorder.
+	recorder := httptest.NewRecorder()
+	router := mux.NewRouter()
+
+	// Sends the request internally.
+	router.HandleFunc("/dialogflow", handlers.ShowAllDogs).Methods("POST")
+	router.ServeHTTP(recorder, request)
+
+	// Gets the respond.
+	var returnedText map[string]string
+	output := recorder.Body.Bytes()
+	json.Unmarshal(output, &returnedText)
+
+	// Returns the text.
+	return returnedText["fulfillmentText"]
 }
 
 // APIContent sends the correct parameters to the html template.
@@ -171,19 +281,43 @@ func APIContent(w http.ResponseWriter, r *http.Request) {
 
 	case "catGif":
 		PageVars.Text = testCatGif()
-		displayGif(w, r)
+		displayImage(w, r)
 
 	case "dogGif":
 		PageVars.Text = testDogGif()
-		displayGif(w, r)
+		displayImage(w, r)
 
 	case "hackerGif":
 		PageVars.Text = testHackerGif()
-		displayGif(w, r)
+		displayImage(w, r)
 
 	case "trendingGif":
 		PageVars.Text = testTrendingGif()
-		displayGif(w, r)
+		displayImage(w, r)
+
+	case "showDog":
+		PageVars.Text = testShowDog()
+		displayImage(w, r)
+
+	case "addDog":
+		PageVars.Text = testAddDog()
+		displayImage(w, r)
+
+	case "addoptDog":
+		PageVars.Text = testAddoptDog()
+		displayImage(w, r)
+
+	case "howManyDogs":
+		PageVars.Text = testHowManyDogs()
+		displayText(w, r)
+
+	case "showAllDogs":
+		PageVars.Text = testShowAllDogs()
+		if PageVars.Text == "No dogs in shelter" {
+			displayText(w, r)
+		} else {
+			displayImage(w, r)
+		}
 
 	default:
 		return
@@ -208,7 +342,7 @@ func displayText(w http.ResponseWriter, r *http.Request) {
 }
 
 // Function to display images.
-func displayGif(w http.ResponseWriter, r *http.Request) {
+func displayImage(w http.ResponseWriter, r *http.Request) {
 	// Parses the HTML template.
 	html, err := template.ParseFiles("website/templates/displayImage.html")
 	if err != nil {

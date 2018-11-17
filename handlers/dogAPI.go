@@ -108,7 +108,7 @@ func AdoptDog(w http.ResponseWriter, r *http.Request) {
 }
 
 // Returns a count of how many dogs are currently in the database
-func getCount(w http.ResponseWriter, r *http.Request) {
+func GetCount(w http.ResponseWriter, r *http.Request) {
 	// Returns a count of how many objects are in the DB
 	dogCount, err := database.FindCount("dogs")
 	if err != nil {
