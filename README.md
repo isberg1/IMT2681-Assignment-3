@@ -14,8 +14,9 @@ Displays this README in html format.
 Used by dialogflow to querie this API.    
 Different public APIs are queried based on the POST sent by dialogflow.
 ```
-POST /dialogflow Returns a custum API responce based on a parameter "b" in post body
-correct json request:
+POST: /dialogflow - Returns a custum API responce based on a parameter "b" in post body
+
+Correct json request:
 
 "queryResult": {
     "queryText": "joke",
@@ -29,38 +30,44 @@ correct json request:
         "text": [""]
       }
     }],
-    
+
 acceptable values for parameter b are:
 "joke"    For a chuch Norris Joke
 "dad"     For a dad Joke
-    
-    
+
+
 ```
 
 ### log
- Returns all logs of all events that has beed logged(mainly errors)    
+ Returns all logs of all events that has beed logged (mainly errors).  
 ```
-GET: /log 
+GET: /log
 ```
 
 ### Old posts
-Returns all API requests preveausly sent to this API
+Returns all API requests preveausly sent to this API.
 ```
-GET /OldPosts 
+GET: /OldPosts
 ```
 
 ###  Statistics
-Returns statistics for the different API usage
+Returns statistics for the different API usage.
 ```
-GET /statistics 
+GET: /statistics
 ```
-***
 
+### Website
+A website where you can test the available APIs we have.
+```
+GET: /website.html
+```
+
+***
 
 ## How this app is deployed
  * The app runs in Heroku at https://warm-meadow-53471.herokuapp.com/
- * Databse ?
+ * Database ?
  * OpenStack? Docker?
 
 ## Additional information
-Created by ....
+Created by Alexander Jakobsen, Martin Brådalen, Mats Ove Mandt Skjærstein
