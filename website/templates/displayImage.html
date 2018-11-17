@@ -4,20 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
       <link rel="stylesheet" href="/static/stylesheets/contentStyle.css">
-      <title>Joke</title>
-  </head>
-  <body>
-
-  </body>
-</html>
-
-<!DOCTYPE html>
-
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-      <link rel="stylesheet" href="/static/stylesheets/contentStyle.css">
-      <title>Joke</title>
+      <title>Image</title>
   </head>
   <body>
 
@@ -26,7 +13,7 @@
 
       <!-- Message -->
       <h6 align="center" >
-        This text would be posted in our Slack channel by dialogflow when the correct command/text are posted.
+        This image would be posted in our Slack channel by dialogflow when the correct command/text are posted.
       </h6>
 
       <!-- Contain the buttons for style -->
@@ -40,9 +27,9 @@
         </form>
       </div>
 
-      <!-- Text -->
-      <div class="boxed">
-        <p>{{.Text}}</p>
+      <!-- Image -->
+      <div id="image">
+        <img src={{.Text}}>
       </div>
 
     </div>

@@ -210,7 +210,7 @@ func displayText(w http.ResponseWriter, r *http.Request) {
 // Function to display images.
 func displayGif(w http.ResponseWriter, r *http.Request) {
 	// Parses the HTML template.
-	html, err := template.ParseFiles("website/templates/displayGif.html")
+	html, err := template.ParseFiles("website/templates/displayImage.html")
 	if err != nil {
 		log.Print("template parsing error: ", err)
 		return
