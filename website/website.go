@@ -217,6 +217,11 @@ func testAddoptDog() string {
 	output := recorder.Body.Bytes()
 	json.Unmarshal(output, &returnedText)
 
+	// Check if there are any dogs in the shelter.
+	if returnedText["fulfillmentText"] == "" {
+		return ""
+	}
+
 	// Splits the text to grab the link.
 	splitText := strings.Split(returnedText["fulfillmentText"], " ")
 
@@ -289,7 +294,12 @@ func APIContent(w http.ResponseWriter, r *http.Request) {
 
 	case "addoptDog":
 		PageVars.Text = testAddoptDog()
-		displayImage(w, r)
+		if PageVars.Text == "" {
+			PageVars.Text = "There are no dogs to addopt"
+			displayText(w, r)
+		} else {
+			displayImage(w, r)
+		}
 
 	case "howManyDogs":
 		PageVars.Text = testHowManyDogs()

@@ -93,12 +93,14 @@ func AdoptDog(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println("Could not find latest")
 		logging(err.Error())
+		return
 	}
 	// Removes the dog object from the database based on ID
 	dog, err = database.DeleteDogWithId(dog.ID.Hex())
 	if err != nil {
 		fmt.Println("Coult not delete dog")
 		logging(err.Error())
+		return
 	}
 
 	// Returns a picture of the dog deleted from the database
