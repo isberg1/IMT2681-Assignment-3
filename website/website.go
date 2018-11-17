@@ -192,8 +192,11 @@ func testAddDog() string {
 	output := recorder.Body.Bytes()
 	json.Unmarshal(output, &returnedText)
 
+	// Splits the text to grab the link.
+	splitText := strings.Split(returnedText["fulfillmentText"], " ")
+
 	// Returns the text.
-	return returnedText["fulfillmentText"]
+	return splitText[3]
 }
 
 // Function to test the addopt dog from animal shelter.
@@ -214,8 +217,11 @@ func testAddoptDog() string {
 	output := recorder.Body.Bytes()
 	json.Unmarshal(output, &returnedText)
 
+	// Splits the text to grab the link.
+	splitText := strings.Split(returnedText["fulfillmentText"], " ")
+
 	// Returns the text.
-	return returnedText["fulfillmentText"]
+	return splitText[6]
 }
 
 // Function to test the how many dog from animal shelter.
@@ -229,28 +235,6 @@ func testHowManyDogs() string {
 
 	// Sends the request internally.
 	router.HandleFunc("/dialogflow", handlers.GetCount).Methods("POST")
-	router.ServeHTTP(recorder, request)
-
-	// Gets the respond.
-	var returnedText map[string]string
-	output := recorder.Body.Bytes()
-	json.Unmarshal(output, &returnedText)
-
-	// Returns the text.
-	return returnedText["fulfillmentText"]
-}
-
-// Function to test the show all dogs from animal shelter.
-func testShowAllDogs() string {
-	// Creates a request that is passed to the handler.
-	request, _ := http.NewRequest("POST", "/dialogflow", nil)
-
-	// Creates the temporary recorder.
-	recorder := httptest.NewRecorder()
-	router := mux.NewRouter()
-
-	// Sends the request internally.
-	router.HandleFunc("/dialogflow", handlers.ShowAllDogs).Methods("POST")
 	router.ServeHTTP(recorder, request)
 
 	// Gets the respond.
@@ -310,14 +294,6 @@ func APIContent(w http.ResponseWriter, r *http.Request) {
 	case "howManyDogs":
 		PageVars.Text = testHowManyDogs()
 		displayText(w, r)
-
-	case "showAllDogs":
-		PageVars.Text = testShowAllDogs()
-		if PageVars.Text == "No dogs in shelter" {
-			displayText(w, r)
-		} else {
-			displayImage(w, r)
-		}
 
 	default:
 		return
