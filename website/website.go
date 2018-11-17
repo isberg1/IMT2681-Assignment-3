@@ -3,12 +3,23 @@ package website
 import (
 	"encoding/json"
 	"fmt"
+	"html/template"
+	"log"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 
 	"github.com/gorilla/mux"
 	"github.com/isberg1/IMT2681-Assignment-3/handlers"
 )
+
+// Struct containing the json text.
+type pageVariable struct {
+	Text string
+}
+
+// PageVars is the variables that should be sent to the HTML template.
+var PageVars pageVariable
 
 // Function to test the chuck norris joke.
 func testChuckNorrisJoke() string {
@@ -140,6 +151,78 @@ func testTrendingGif() string {
 
 	// Returns the joke.
 	return joke["fulfillmentText"]
+}
+
+// APIContent sends the correct parameters to the html template.
+func APIContent(w http.ResponseWriter, r *http.Request) {
+	message := r.URL.Path
+
+	// Splits the URL path and stores it.
+	input := strings.Split(message, "/")
+
+	// Change the text based on the path.
+	switch input[2] {
+	case "chuckNorrisJoke":
+		PageVars.Text = testChuckNorrisJoke()
+		displayText(w, r)
+
+	case "dadJoke":
+		PageVars.Text = testDadJoke()
+		displayText(w, r)
+
+	case "catGif":
+		PageVars.Text = testCatGif()
+		displayGif(w, r)
+
+	case "dogGif":
+		PageVars.Text = testDogGif()
+		displayGif(w, r)
+
+	case "hackerGif":
+		PageVars.Text = testHackerGif()
+		displayGif(w, r)
+
+	case "trendingGif":
+		PageVars.Text = testTrendingGif()
+		displayGif(w, r)
+
+	default:
+		return
+	}
+}
+
+// Function to display text.
+func displayText(w http.ResponseWriter, r *http.Request) {
+	// Parses the HTML template.
+	html, err := template.ParseFiles("./templates/displayText.html")
+	if err != nil {
+		log.Print("template parsing error: ", err)
+		return
+	}
+
+	// Executes the template and sends the parameter to the HTML file.
+	err = html.Execute(w, PageVars)
+	if err != nil {
+		log.Print("template executing error: ", err)
+		return
+	}
+}
+
+// Function to display images.
+func displayGif(w http.ResponseWriter, r *http.Request) {
+	// Parses the HTML template.
+	html, err := template.ParseFiles("./templates/displayGif.html")
+	if err != nil {
+		log.Print("template parsing error: ", err)
+		return
+	}
+
+	// Executes the template and sends the parameter to the HTML file.
+	err = html.Execute(w, PageVars)
+	if err != nil {
+		log.Print("template executing error: ", err)
+		return
+	}
 }
 
 // TEMP

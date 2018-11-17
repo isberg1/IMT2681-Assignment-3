@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <link rel="stylesheet" href="/static/stylesheets/topStyle.css">
+      <title>Joke</title>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <link rel="stylesheet" href="/static/stylesheets/contentStyle.css">
+      <title>Joke</title>
+  </head>
+  <body>
+
+    <!-- Stop stuff from moving -->
+    <div id="page-wrap">
+
+      <!-- Message -->
+      <h6 align="center" >
+        This text would be posted in our Slack channel by dialogflow when the correct command/text are posted.
+      </h6>
+
+      <!-- Contain the buttons for style -->
+      <div id="container">
+        <!-- Button to refresh page -->
+        <input type="button" value="Try again" onClick="window.location.reload()">
+
+        <!-- Button to go back -->
+        <form action="/website.html">
+          <input type="submit" class="button2" value="Go back" />
+        </form>
+      </div>
+
+      <!-- Text -->
+      <div class="boxed">
+        <p>{{.Text}}</p>
+      </div>
+
+    </div>
+  </body>
+</html>

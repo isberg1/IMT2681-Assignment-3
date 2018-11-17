@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en", "no">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <link rel="stylesheet" href="/static/stylesheets/topStyle.css">
+      <title>Wesite</title>
+  </head>
+  <body>
+
+    <!-- Welome message -->
+    <h1 align="center" id="message"></h1>
+      <script type="text/javascript">
+        var d = new Date();
+        var n = d.getHours();
+
+        if ( n == 23 || n == 0) {
+          message = "<img src='/static/pictures/goodnight1.png'></img>";
+        } else if ( n >= 1 && n <= 4 ) {
+          message = "<img src='/static/pictures/goodnight1.png'></img>";
+        } else if ( n >= 5 && n <= 11 ) {
+          message = "<img src='/static/pictures/goodmorning1.png'></img>";
+        } else if ( n >= 12 && n <= 17 ) {
+          message = "<img src='/static/pictures/goodafternoon1.png'></img>";
+        } else if ( n >= 18 && n <= 22 ) {
+          message = "<img src='/static/pictures/goodevening1.png' </img>";
+        }
+        document.getElementById("message").innerHTML = message;
+
+      </script>
+
+    <!-- Message -->
+    <h6 align="center" >
+      From this website you can test the functionallity of the application.
+      </br>
+      Choose what API you want to test, and you will get the same output that our Slack channel would.
+    </h6>
+
+    <!-- Linkboks -->
+    <div class="boxed">
+      <span> <img src="/static/pictures/Link.png"></span>
+      <a style="padding-left:10px" href="website.html/chuckNorrisJoke">Chuck Norris joke</a>
+      </br>
+
+      <span> <img src="/static/pictures/Link.png"></span>
+      <a style="padding-left:10px" href="website.html/dadJoke">Dad joke</a>
+      </br>
+
+      <span> <img src="/static/pictures/Link.png"></span>
+      <a style="padding-left:10px" href="website.html/catGif">Funny Cat gif</a>
+      </br>
+
+      <span> <img src="/static/pictures/Link.png"></span>
+      <a style="padding-left:10px" href="website.html/dogGif">Funny Dog gif</a>
+      </br>
+
+      <span> <img src="/static/pictures/Link.png"></span>
+      <a style="padding-left:10px" href="website.html/hackerGif">Hacker gif</a>
+      </br>
+
+      <span> <img src="/static/pictures/Link.png"></span>
+      <a style="padding-left:10px" href="website.html/trendingGif">Trending gif</a>
+      </br>
+    </div>
+
+  </body>
+</html>
