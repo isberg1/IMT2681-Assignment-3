@@ -2,7 +2,6 @@ package website
 
 import (
 	"encoding/json"
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -194,7 +193,7 @@ func APIContent(w http.ResponseWriter, r *http.Request) {
 // Function to display text.
 func displayText(w http.ResponseWriter, r *http.Request) {
 	// Parses the HTML template.
-	html, err := template.ParseFiles("./templates/displayText.html")
+	html, err := template.ParseFiles("website/templates/displayText.html")
 	if err != nil {
 		log.Print("template parsing error: ", err)
 		return
@@ -211,7 +210,7 @@ func displayText(w http.ResponseWriter, r *http.Request) {
 // Function to display images.
 func displayGif(w http.ResponseWriter, r *http.Request) {
 	// Parses the HTML template.
-	html, err := template.ParseFiles("./templates/displayGif.html")
+	html, err := template.ParseFiles("website/templates/displayGif.html")
 	if err != nil {
 		log.Print("template parsing error: ", err)
 		return
@@ -223,15 +222,4 @@ func displayGif(w http.ResponseWriter, r *http.Request) {
 		log.Print("template executing error: ", err)
 		return
 	}
-}
-
-// TEMP
-func TestingWebsite(w http.ResponseWriter, r *http.Request) {
-
-	fmt.Fprintf(w, testChuckNorrisJoke()+"\n")
-	fmt.Fprintf(w, testDadJoke()+"\n")
-	fmt.Fprintf(w, testCatGif()+"\n")
-	fmt.Fprintf(w, testDogGif()+"\n")
-	fmt.Fprintf(w, testHackerGif()+"\n")
-	fmt.Fprintf(w, testTrendingGif()+"\n")
 }

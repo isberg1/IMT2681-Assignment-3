@@ -15,12 +15,12 @@ func main() {
 	database.Connect()
 	r := mux.NewRouter()
 
-	// Allow static files (css and pictures) for the website.
+	// Allow static files (pictures) for the website.
 	r.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./website"))))
 	// Serves the testing website.
 	r.Handle("/website.html", http.FileServer(http.Dir("./website/templates")))
 	// Handles the display of content in the website.
-	r.HandleFunc("/website.html/", website.APIContent).Methods("GET")
+	r.HandleFunc("/website.html/{type:[a-z-A-Z]+}", website.APIContent).Methods("GET")
 
 	r.HandleFunc("/", handlers.Frontpage).Methods("GET")
 	r.HandleFunc("/dialogflow", handlers.Dialogflow).Methods("POST")
