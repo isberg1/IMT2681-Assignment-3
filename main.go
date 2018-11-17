@@ -16,7 +16,11 @@ func main() {
 	r := mux.NewRouter()
 
 	// Allow static files (pictures) for the website.
-	r.Handle("/pictures/", http.StripPrefix("/pictures/", http.FileServer(http.Dir("./website/static/"))))
+	//r.Handle("/pictures/", http.StripPrefix("/pictures/", http.FileServer(http.Dir("./website/static/"))))
+	//r.Handle("/pictures/{rest}", http.StripPrefix("/pictures/", http.FileServer(http.Dir("./website/static/pictures/"))))
+
+	r.PathPrefix("/pictures/").Handler(http.StripPrefix("/pictures/", http.FileServer(http.Dir("./website/static/pictures/"))))
+
 	// Serves the testing website.
 	r.Handle("/website.html", http.FileServer(http.Dir("./website/templates")))
 	// Handles the display of content in the website.
