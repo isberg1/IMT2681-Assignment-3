@@ -5,18 +5,18 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
-	//"github.com/isberg1/IMT2681-Assignment-3/database"
+	"github.com/isberg1/IMT2681-Assignment-3/database"
 	"github.com/isberg1/IMT2681-Assignment-3/handlers"
 	"github.com/isberg1/IMT2681-Assignment-3/website"
 )
 
 func main() {
 	// Connects to the mongoDB, for the moment hosted in mLabs
-	//	database.Connect()
+	database.Connect()
 	r := mux.NewRouter()
 
 	// Allow static files (pictures) for the website.
-	r.Handle("/static/pictures/", http.StripPrefix("/static/pictures/", http.FileServer(http.Dir("./website/static"))))
+	r.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./website"))))
 	// Serves the testing website.
 	r.Handle("/website.html", http.FileServer(http.Dir("./website/templates")))
 	// Handles the display of content in the website.
