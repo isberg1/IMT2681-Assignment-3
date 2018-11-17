@@ -1,14 +1,13 @@
 .boxed {
- border: 1px solid #e6e6e6;
- padding: 5px;
- color: #494949;
- background-color: #ffffff;
- width: 760px;
- margin-left: -390px;
- margin-right: auto;
- position:absolute;
- left: 50%;
- top: 40%;
+  border: 1px solid #e6e6e6;
+  padding: 5px;
+  color: #494949;
+  background-color: #ffffff;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  margin-top: 100px;  
 }
 
 a {
