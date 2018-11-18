@@ -21,7 +21,7 @@ The Plan for the project was for the team members to have 2 tasks each. set up 1
 thing based on available time. It is up to each team member to find there own API request case to implement.
 the other thing to be done was originally related to the list of features we had to use(Heroku, Docker, Database, Cloud function, Openstack).
 
-total work all members:
+total work all members:  
 total work Alexander Jakobsen: 		37 hours  
 total work Mats Ove Mandt Skjærstein: 	27 hours  
 total work Per-Kristian: 		17 hours  
