@@ -76,6 +76,50 @@ cd handlers/
 
 go test . -v -cover
 
+```
+=== RUN   Test_GetChuckNorrisJoke
+--- PASS: Test_GetChuckNorrisJoke (0.91s)
+=== RUN   Test_FrontPage
+--- PASS: Test_FrontPage (0.00s)
+=== RUN   Test_statdb
+--- PASS: Test_statdb (0.00s)
+=== RUN   Test_statHandler
+--- PASS: Test_statHandler (0.00s)
+=== RUN   Test_addStatisticEntry
+--- PASS: Test_addStatisticEntry (0.01s)
+=== RUN   Test_wikeAPI
+--- PASS: Test_wikeAPI (0.19s)
+=== RUN   Test_GetRandomDadJoke
+--- PASS: Test_GetRandomDadJoke (0.19s)
+=== RUN   Test_db
+--- PASS: Test_db (0.00s)
+=== RUN   Test_addDog
+--- PASS: Test_addDog (0.18s)
+=== RUN   Test_showDog
+--- PASS: Test_showDog (0.10s)
+=== RUN   Test_adoptDog
+--- PASS: Test_adoptDog (0.07s)
+=== RUN   Test_DBConnect
+--- PASS: Test_DBConnect (0.00s)
+=== RUN   Test_GetFunnyCatGif
+--- PASS: Test_GetFunnyCatGif (0.21s)
+=== RUN   Test_GetFunnyDogGif
+--- PASS: Test_GetFunnyDogGif (0.05s)
+=== RUN   Test_GetHackerGif
+--- PASS: Test_GetHackerGif (0.06s)
+=== RUN   Test_GetTrendingGif
+--- PASS: Test_GetTrendingGif (0.06s)
+=== RUN   Test_log
+--- PASS: Test_log (0.00s)
+=== RUN   Test_checkLog
+--- PASS: Test_checkLog (0.00s)
+PASS
+coverage: 61.0% of statements
+ok      github.com/isberg1/IMT2681-Assignment-3/handlers        2.043s  coverage: 61.0% of statements
+
+```
+
+
 # Using the program
 
 Log in to the Slack Channel you have been invited to

@@ -14,8 +14,7 @@ func Test_statdb(t *testing.T) {
 	database.Connect()
 }
 
-func Test_statHandler(t *testing.T)  {
-
+func Test_statHandler(t *testing.T) {
 
 	// Creates a request that is passed to the handler.
 	request, err2 := http.NewRequest("GET", "/statistics", nil)
@@ -44,6 +43,7 @@ func Test_statHandler(t *testing.T)  {
 	}
 
 }
+
 // checks that a statistic entry is updated when a command is used
 func Test_addStatisticEntry(t *testing.T) {
 	// type of entry to check
@@ -54,7 +54,7 @@ func Test_addStatisticEntry(t *testing.T) {
 	// count nr of existing entries
 	jokeStat, err := database.GetStatObject(commandType)
 	if err != nil {
-		t.Error("fail, can not retrieve entry for",commandType)
+		t.Error("fail, can not retrieve entry for", commandType)
 	}
 	// convert to int
 	firstCount, err2 := strconv.Atoi(jokeStat.Visitors)
@@ -67,17 +67,16 @@ func Test_addStatisticEntry(t *testing.T) {
 	// count nr of existing entries
 	jokeStat2, err3 := database.GetStatObject(commandType)
 	if err3 != nil {
-		t.Error("fail, can not retrieve entry for",commandType, err3)
+		t.Error("fail, can not retrieve entry for", commandType, err3)
 	}
 	// convert to int
 	secondCount, err4 := strconv.Atoi(jokeStat2.Visitors)
 	if err4 != nil {
-		t.Error("fail, unable to convert visitor count to int ",err4)
+		t.Error("fail, unable to convert visitor count to int ", err4)
 	}
 	// check if nr of count is correct
-	if secondCount != ( firstCount+1) {
+	if secondCount != (firstCount + 1) {
 		t.Error("fail, wrong visitor count ")
 	}
 
 }
-

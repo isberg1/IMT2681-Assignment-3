@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func Test_FrontPage(t *testing.T)  {
+func Test_FrontPage(t *testing.T) {
 
 	// Creates a request that is passed to the handler.
 	request, err2 := http.NewRequest("GET", "/", nil)

@@ -11,10 +11,9 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func Test_DBConnect(t *testing.T){
+func Test_DBConnect(t *testing.T) {
 	database.Connect()
 }
-
 
 // Function to test: GetFunnyCatGif().
 // Test to check the returned status code, content-type and data for the function.

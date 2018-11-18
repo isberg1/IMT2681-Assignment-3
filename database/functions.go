@@ -53,7 +53,7 @@ func InsertStatistics(stat Statistics) error {
 //therefore one can assume that no sorting or query method is required.
 func GetStatObject(command string) (Statistics, error) {
 	var stat Statistics
-	err := db.C(STAT).Find(bson.M{"command":command}).One(&stat)
+	err := db.C(STAT).Find(bson.M{"command": command}).One(&stat)
 	return stat, err
 }
 

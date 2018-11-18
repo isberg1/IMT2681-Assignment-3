@@ -15,10 +15,8 @@ func Test_db(t *testing.T) {
 	database.Connect()
 }
 
-
 // tests the AddDog functionallyty
-func Test_addDog(t *testing.T)  {
-
+func Test_addDog(t *testing.T) {
 
 	// used to chech that a new dog was added
 	nr, err := database.FindCount("dogs")
@@ -34,18 +32,19 @@ func Test_addDog(t *testing.T)  {
 		t.Error("fail, cant find nr2 in collection dogs", err2)
 	}
 
-	if nr2 != (nr +1) {
+	if nr2 != (nr + 1) {
 		t.Error("wrong count in collection dogs")
 	}
 
 }
+
 // shows a dog image
-func Test_showDog(t *testing.T)  {
+func Test_showDog(t *testing.T) {
 
 	chechResponse(t, "show dog")
 }
 
-func Test_adoptDog(t *testing.T)  {
+func Test_adoptDog(t *testing.T) {
 
 	// add a dog to ensure there is a dog in the database
 	chechResponse(t, "add dog")
@@ -63,7 +62,7 @@ func Test_adoptDog(t *testing.T)  {
 		t.Error("fail, cant find nr in collection dogs", err1)
 	}
 
-	if nr2 != (nr1 -1) {
+	if nr2 != (nr1 - 1) {
 		t.Error("fail, wrong number of dogs in DB", err1)
 	}
 

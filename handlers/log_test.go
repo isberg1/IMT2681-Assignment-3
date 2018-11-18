@@ -7,20 +7,16 @@ import (
 	"github.com/isberg1/IMT2681-Assignment-3/database"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 )
 
-// online test returns correct result, but reports 0 % test courage
-func Test_GetChuckNorrisJoke(t *testing.T) {
+func Test_log(t *testing.T) {
 
-	// ensure connection to database
 	database.Connect()
-	// expected content-type to be sendt back
-	contentType := "application/json"
 
-	// make a struck for queering the API
-	querry := Querry{Para{B: "joke"}, ""}
-	strc := DialogflowPostStruct{ResponseID: "testid", FulfillmentText: "joke", QueryResult: querry}
+	querry := Querry{Para{B: "no match in switch case"}, ""}
+	strc := DialogflowPostStruct{ResponseID: "testid", FulfillmentText: "no match in switch case", QueryResult: querry}
 
 	// convert to json
 	str, err := json.Marshal(strc)
@@ -43,6 +39,27 @@ func Test_GetChuckNorrisJoke(t *testing.T) {
 
 	// Check the status code is what we expect (200).
 	status := recorder.Code
+	if status != http.StatusBadRequest {
+		t.Errorf("Handler returned wrong status code: got %v want %v",
+			status, http.StatusBadRequest)
+	}
+}
+
+func Test_checkLog(t *testing.T) {
+
+	// Creates a request that is passed to the handler.
+	request, _ := http.NewRequest("GET", "/log", nil)
+
+	// Creates the recorder and router.
+	recorder := httptest.NewRecorder()
+	router := mux.NewRouter()
+
+	// Tests the function.
+	router.HandleFunc("/log", Log).Methods("GET")
+	router.ServeHTTP(recorder, request)
+
+	// Check the status code is what we expect (200).
+	status := recorder.Code
 	if status != http.StatusOK {
 		t.Errorf("Handler returned wrong status code: got %v want %v",
 			status, http.StatusOK)
@@ -50,20 +67,19 @@ func Test_GetChuckNorrisJoke(t *testing.T) {
 
 	// Check if the content-type is what we expect (application/json).
 	content := recorder.HeaderMap.Get("content-type")
-	if content != contentType {
+	if content != "text/plain" {
 		t.Errorf("Handler returned wrong content-type: got %s want %s",
-			content, contentType)
+			content, "text/plain")
 	}
-	// struct used for storing reply
-	var responseStruct DialogFlowResponceStruct
-	// unmarshal from json to struct
-	err3 := json.NewDecoder(recorder.Body).Decode(&responseStruct)
-	if err3 != nil {
-		t.Error("unable do unmarshal dialogflow type json message")
+
+	// Check if returned value is empty.
+	actual := recorder.Body.String()
+	if actual == "" {
+		t.Error("handler returned no data")
 	}
-	// check if there is any content in the responce
-	if responseStruct.FulfillmentText == "" || responseStruct.Payload.Slack.Text == "" {
-		t.Error("received no content form API")
+
+	if !strings.Contains(actual, "no match in switch case") {
+		t.Error("handler incorrect data")
 	}
 
 }

@@ -30,8 +30,8 @@ type Para struct {
 
 // Querry is used for receiving requests form dialogflow
 type Querry struct {
-	Parameters Para `json:"parameters"`
-	QueryText string `json:"queryText"`
+	Parameters Para   `json:"parameters"`
+	QueryText  string `json:"queryText"`
 }
 
 // DialogflowPostStruct is used for receiving requests form dialogflow
@@ -116,7 +116,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 
 	default:
 		http.Error(w, "", http.StatusBadRequest)
-		logging("incorrect value sent to Dialogflow switch case function")
+		logging("incorrect value sent to Dialogflow switch case function:  " + str.QueryResult.Parameters.B)
 		return
 	}
 

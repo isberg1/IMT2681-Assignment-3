@@ -10,17 +10,15 @@ import (
 	"testing"
 )
 
-// online test returns correct result, but reports 0 % test courage
-func Test_GetChuckNorrisJoke(t *testing.T) {
+func Test_wikeAPI(t *testing.T) {
 
 	// ensure connection to database
 	database.Connect()
 	// expected content-type to be sendt back
 	contentType := "application/json"
-
 	// make a struck for queering the API
-	querry := Querry{Para{B: "joke"}, ""}
-	strc := DialogflowPostStruct{ResponseID: "testid", FulfillmentText: "joke", QueryResult: querry}
+	querry := Querry{Para{B: "search"}, "search norge"}
+	strc := DialogflowPostStruct{ResponseID: "testid", FulfillmentText: "search", QueryResult: querry}
 
 	// convert to json
 	str, err := json.Marshal(strc)
@@ -61,7 +59,7 @@ func Test_GetChuckNorrisJoke(t *testing.T) {
 	if err3 != nil {
 		t.Error("unable do unmarshal dialogflow type json message")
 	}
-	// check if there is any content in the responce
+	// check if there is any content in the response
 	if responseStruct.FulfillmentText == "" || responseStruct.Payload.Slack.Text == "" {
 		t.Error("received no content form API")
 	}
