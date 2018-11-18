@@ -109,7 +109,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 
 	// register the
 	Statistic(str.QueryResult.Parameters.B)
-	commandTimeStamp = time.Now().UTC().String()
+	commandTimeStamp = time.Now().String()
 
 	// log request
 }
