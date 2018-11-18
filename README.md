@@ -14,6 +14,9 @@ The Plan for the project was for the team members to have 2 tasks each. set up 1
 thing based on available time. It is up to each team member to find there own API request case to implement.
 the other thing to be done was originally related to the list of features we had to use(Heroku, Docker, Database, Cloud function, Openstack).
 
+
+
+
 total work all members:
 total work Alexander Jakobsen:
 total work :
@@ -29,10 +32,42 @@ what we succeeded at:
 * Make 5 API request handlers
 * Use a Database to store statistic
 * Use Docker to make a locally deplorably version of the app
-*
+* make a nicer website(using html and css) for testing API features without using slack
+
 
 what we failed at
 * Cloud functions
+
+
+we have used discord and in person meetings for group communication. all team members are able to push to github. And view Heroku
+project page.
+
+
+
+Code quality
+golinter
+go fmt
+gocyclo
+gometalinter -- metalinter
+
+    Everything ok
+
+continuous integration
+
+    automatic deployment form github to heroku. if compile fails then we are notified by mail
+
+
+in order to run the tests locally you must provide the following environmental variables( reviews will be given our data)
+
+  export MONG_ADDRESS=
+  export MONG_DATABASE=
+  export MONGO_PASSWORD=
+  export MONGO_USER=
+  export MONGO_ADDRESS=
+
+
+cd handlers/
+go test . -v -cover
 
 
 
@@ -41,9 +76,6 @@ what we failed at
   // score 10 out of 100, unless it has unique features not seen anywhere else.											
 
 # Scope
-The Plan for the project was for the team members to have 2 tasks each. set up 1 API request handler. And 1 other thing
-
-
 
 
 // How well the project has been specifiied on the Wiki? Was it easy to understand the scope and what the project will do? Were the requirements of the user separated from the technical details of the implementation? Was it all easy to understand?											
@@ -134,7 +166,7 @@ A website where you can test the available APIs we have.
  * The app runs in Heroku at https://warm-meadow-53471.herokuapp.com/
  * Database ?
  * OpenStack? Docker?
-.env file must have 
+.env file must have
 		MONGO_ADDRESS=<mongodb address:port>
 		MONGO_USER=<username>
 		MONGO_PASSWORD=<password>
