@@ -71,7 +71,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	// select action based on request parameter
 	switch str.QueryResult.Parameters.B {
 	case "joke":
-		// return a chuch norris joke
+		// return a chuck norris joke.
 		GetChuckNorrisJoke(w, r)
 
 	case "dad":
@@ -95,12 +95,12 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		GetTrendingGif(w, r)
 
 	case "show dog":
-		// Shows a random picture of a dog
+		// Shows a random picture of a dog.
 		ShowDog(w, r)
 
 	case "add dog":
 		AddDog(w, r)
-		logging("Added a dog")
+
 	case "adopt":
 		AdoptDog(w, r)
 
@@ -110,8 +110,9 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	case "show all":
 		ShowAllDogs(w, r)
 
-	case "Norway":
-		GetWiki(w, r)
+	case "search":
+		// Searches for a query sent through slack.
+		GetWiki(w, r, str.QueryResult.QueryText)
 
 	default:
 		http.Error(w, "", http.StatusBadRequest)
