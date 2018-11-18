@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-// webpage explaining api functionality
+// Frontpage is a webpage explaining api functionality
 func Frontpage(w http.ResponseWriter, r *http.Request) {
 
 	// Loads the README file.
@@ -22,5 +22,6 @@ func Frontpage(w http.ResponseWriter, r *http.Request) {
 		// Converts the markdown file to html.
 		html := markdown.ToHTML(markdownData, nil, nil)
 		w.Write([]byte(html))
+
 	}
 }

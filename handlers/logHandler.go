@@ -13,13 +13,13 @@ var logArray []string
 // Log displays all log messages, used for storing errors, and debugging
 func Log(w http.ResponseWriter, r *http.Request) {
 
-	for _, val:= range logArray{
+	for _, val := range logArray {
 		fmt.Fprintln(w, val)
 	}
 
 }
+
 // adds new log messages to storage
-func logging(s string)  {
+func logging(s string) {
 	logArray = append(logArray, s)
 }
-

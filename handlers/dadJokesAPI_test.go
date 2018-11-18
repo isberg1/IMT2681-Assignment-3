@@ -3,6 +3,7 @@
 package handlers
 
 import (
+	"github.com/isberg1/IMT2681-Assignment-3/database"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -13,6 +14,9 @@ import (
 // Function to test: GetRandomDadJoke().
 // Test to check the returned status code, content-type and data for the function.
 func Test_GetRandomDadJoke(t *testing.T) {
+
+	database.Connect()
+
 	// Creates a request that is passed to the handler.
 	request, _ := http.NewRequest("POST", "/dialogflow", nil)
 

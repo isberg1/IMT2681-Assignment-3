@@ -15,15 +15,16 @@ chuck norris api jason: response
 "value" : "The Mona Lisa is based on a peice of toilet paper used by Chuck Norris."
 }
 */
-//Chuch struct is used for receiving json strings form Chuch Norris API
+
+// Chuch struct is used for receiving json strings form Chuch Norris API
 type Chuch struct {
-	Icon_url string `json:"icon_url"`
-	ID       string `json:"id"`
-	URL      string `json:"url"`
-	Value    string `json:"value"`
+	IconURL string `json:"icon_url"`
+	ID      string `json:"id"`
+	URL     string `json:"url"`
+	Value   string `json:"value"`
 }
 
-// gets a Chuch Norris json string, extracts the relevant value from it and
+// GetChuckNorrisJoke gets a Chuch Norris json string, extracts the relevant value from it and
 // sends it to be formatted for dialogflow
 func GetChuckNorrisJoke(w http.ResponseWriter, r *http.Request) {
 
@@ -32,9 +33,9 @@ func GetChuckNorrisJoke(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "error form chuchnorris api", 500)
 		logging("error form chuchnorris api")
 		return
-	} else {
-		defer res.Body.Close()
 	}
+	defer res.Body.Close()
+
 	var joke Chuch
 	err2 := json.NewDecoder(res.Body).Decode(&joke)
 	if err2 != nil {

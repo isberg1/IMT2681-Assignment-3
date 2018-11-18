@@ -20,6 +20,7 @@ import (
       }
     }],
 */
+
 // Para is used for receiving requests form dialogflow
 type Para struct {
 	B string `json:"b"`
@@ -32,7 +33,7 @@ type Querry struct {
 
 // DialogflowPostStruct is used for receiving requests form dialogflow
 type DialogflowPostStruct struct {
-	ResponseId      string `json:"responseId"`
+	ResponseID      string `json:"responseId"`
 	FulfillmentText string `json:"fulfillmentText"`
 	QueryResult     Querry `json:"queryResult"`
 }
@@ -123,6 +124,7 @@ correct jason response to dialogflow for slack
   }
 }
 */
+
 // PayLoade is used to reply to the dialogflow chat-bot
 type PayLoade struct {
 	Slack SlackMessage `json:"slack"`
@@ -145,7 +147,6 @@ func postToDialogflow(w http.ResponseWriter, jsonString string) {
 	w.Header().Set("content-type", "application/json")
 
 	// make response struct that will be sent back to dialogflow
-
 	var respToDialogflow DialogFlowResponceStruct
 	respToDialogflow.FulfillmentText = jsonString
 
@@ -158,5 +159,4 @@ func postToDialogflow(w http.ResponseWriter, jsonString string) {
 
 	// write response back to dialogflow
 	json.NewEncoder(w).Encode(respToDialogflow)
-
 }

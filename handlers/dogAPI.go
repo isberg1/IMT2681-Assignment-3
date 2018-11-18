@@ -11,7 +11,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
-// Shows a picture of a random dog
+// ShowDog shows a picture of a random dog
 func ShowDog(w http.ResponseWriter, r *http.Request) {
 	type dogs struct {
 		Status  string `json:"status"`
@@ -39,7 +39,7 @@ func ShowDog(w http.ResponseWriter, r *http.Request) {
 	postToDialogflow(w, dog.Message)
 }
 
-// Adds a dog to the database
+// AddDog adds a dog to the database
 func AddDog(w http.ResponseWriter, r *http.Request) {
 
 	// Struct made to decode the values into
@@ -84,7 +84,7 @@ func AddDog(w http.ResponseWriter, r *http.Request) {
 	postToDialogflow(w, returnString)
 }
 
-// Removes a dog object from the database,
+// AdoptDog removes a dog object from the database,
 // and gives the user a response that they adopted a dog
 func AdoptDog(w http.ResponseWriter, r *http.Request) {
 	// the database is a FIFO list,
@@ -96,7 +96,7 @@ func AdoptDog(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// Removes the dog object from the database based on ID
-	dog, err = database.DeleteDogWithId(dog.ID.Hex())
+	dog, err = database.DeleteDogWithID(dog.ID.Hex())
 	if err != nil {
 		fmt.Println("Coult not delete dog")
 		logging(err.Error())
@@ -109,7 +109,7 @@ func AdoptDog(w http.ResponseWriter, r *http.Request) {
 	postToDialogflow(w, returnString)
 }
 
-// Returns a count of how many dogs are currently in the database
+// GetCount returns a count of how many dogs are currently in the database
 func GetCount(w http.ResponseWriter, r *http.Request) {
 	// Returns a count of how many objects are in the DB
 	dogCount, err := database.FindCount("dogs")
@@ -124,7 +124,7 @@ func GetCount(w http.ResponseWriter, r *http.Request) {
 	postToDialogflow(w, returnString)
 }
 
-// Returns a picture of all dogs currently in the database
+// ShowAllDogs Returns a picture of all dogs currently in the database
 func ShowAllDogs(w http.ResponseWriter, r *http.Request) {
 	// Returns all object in the db
 	dogs, err := database.FindAll()

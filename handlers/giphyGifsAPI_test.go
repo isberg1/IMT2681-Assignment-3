@@ -3,12 +3,18 @@
 package handlers
 
 import (
+	"github.com/isberg1/IMT2681-Assignment-3/database"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 
 	"github.com/gorilla/mux"
 )
+
+func Test_DBConnect(t *testing.T){
+	database.Connect()
+}
+
 
 // Function to test: GetFunnyCatGif().
 // Test to check the returned status code, content-type and data for the function.
