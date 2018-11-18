@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -59,6 +60,12 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	}
 
 	postMemory = str.QueryResult.Parameters.B
+	commandTimeStamp = time.Now().String()
+	commands = strings.Join([]string{
+		commands, "\n",
+		commandTimeStamp, "\t",
+		postMemory, "\n"},
+		"")
 	// select action based on request parameter
 	switch str.QueryResult.Parameters.B {
 	case "joke":
@@ -109,7 +116,6 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 
 	// register the
 	Statistic(str.QueryResult.Parameters.B)
-	commandTimeStamp = time.Now().String()
 
 	// log request
 }
