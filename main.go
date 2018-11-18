@@ -24,7 +24,7 @@ func main() {
 
 	r.HandleFunc("/", handlers.Frontpage).Methods("GET")
 	r.HandleFunc("/dialogflow", handlers.Dialogflow).Methods("POST")
-	r.HandleFunc("/OldPosts", handlers.OldPosts).Methods("GET")
+	r.HandleFunc("/oldPosts", handlers.OldPosts).Methods("GET")
 	r.HandleFunc("/log", handlers.Log).Methods("GET")
 	r.HandleFunc("/statistics", handlers.Stats).Methods("GET")
 
