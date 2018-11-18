@@ -166,7 +166,9 @@ A website where you can test the available APIs we have.
  * The app runs in Heroku at https://warm-meadow-53471.herokuapp.com/
  * Database ?
  * OpenStack? Docker?
-.env file must have
+
+ .env file must have
+
 		MONGO_ADDRESS=<mongodb address:port>
 		MONGO_USER=<username>
 		MONGO_PASSWORD=<password>

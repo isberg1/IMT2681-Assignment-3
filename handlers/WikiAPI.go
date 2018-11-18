@@ -16,7 +16,6 @@ func GetWiki(w http.ResponseWriter, r *http.Request, s string) {
 	// Sets up a new request with the correct headers; JSON formatted response.
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("redirect", "resolve")
 	// Opens a client towards the API so that the headers information can be passed through.
 	client := &http.Client{}
 	resp, err := client.Do(req)
