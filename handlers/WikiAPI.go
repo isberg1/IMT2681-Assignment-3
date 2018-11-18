@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -9,29 +8,30 @@ import (
 
 func GetWiki(w http.ResponseWriter, r *http.Request) {
 
-	srcString := "Norway"
-	url := "https://en.wikipedia.org/w/api.php?action=opensearch&limit=1&format=json&search=" + srcString
-//	fmt.Println("URL: ", url)
 
+
+	srcString := "Norway"
+	srcString = strings.Replace(srcString, " ", "_", -1)
+	// Appends the normalized query to the URL of the http request.
+	url := "https://en.wikipedia.org/w/api.php?action=opensearch&limit=1&format=json&search=" + srcString
+
+	// Sets up a new request with the correct headers; JSON formatted response.
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Set("Content-Type", "application/json")
-
+	// Opens a client towards the API so that the headers information can be passed through.
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		http.Error(w, "404 Page not found", 404)
+		logging("could not retrieve wikipage, 404")
 		return
 	}
 	defer resp.Body.Close()
-
-
-
+	// Transfers the http body content to a variable that is converted to string.
 	body, err := ioutil.ReadAll(resp.Body)
 	bodyStr := string(body)
-
+	// Splits out the string into slices and removes all unnecessary text.
 	convertedStr := strings.Split(bodyStr, "[")
 	finalStr := strings.Trim(string(convertedStr[3]), "],")
-	fmt.Println(finalStr)
-
+	// Sends the resulting string to the dialogflowHandler.
 	postToDialogflow(w, finalStr)
 }

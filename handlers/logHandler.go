@@ -19,6 +19,7 @@ func Log(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Errors: ")
 	fmt.Fprintln(w, logArray)
 
+
 }
 
 // adds new log messages to storage
