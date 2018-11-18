@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 /*
@@ -108,6 +109,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 
 	// register the
 	Statistic(str.QueryResult.Parameters.B)
+	commandTimeStamp = time.Now().UTC().String()
 
 	// log request
 }
