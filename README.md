@@ -67,6 +67,7 @@ A website where you can test the available APIs we have.
  * Database ?
  * OpenStack? Docker?
 .env file must have 
+
 		MONGO_ADDRESS=<mongodb address:port>
 		MONGO_USER=<username>
 		MONGO_PASSWORD=<password>
