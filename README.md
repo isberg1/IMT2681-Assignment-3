@@ -72,6 +72,8 @@ in order to run the tests locally you must provide the following environmental v
 
 
 cd handlers/
+
+
 go test . -v -cover
 
 # Using the program
