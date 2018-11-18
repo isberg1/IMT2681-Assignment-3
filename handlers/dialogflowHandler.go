@@ -99,7 +99,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 
 	case "add dog":
 		AddDog(w, r)
-
+		logging("Added a dog")
 	case "adopt":
 		AdoptDog(w, r)
 
