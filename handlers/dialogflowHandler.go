@@ -67,6 +67,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		commandTimeStamp, "\t",
 		postMemory, "\n"},
 		"")
+
 	// select action based on request parameter
 	switch str.QueryResult.Parameters.B {
 	case "joke":
