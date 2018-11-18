@@ -101,6 +101,9 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	case "show all":
 		ShowAllDogs(w, r)
 
+	case "norway":
+		GetWiki(w, r)
+
 	default:
 		http.Error(w, "", http.StatusBadRequest)
 		logging("incorrect value sent to Dialogflow switch case function")
