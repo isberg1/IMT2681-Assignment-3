@@ -66,6 +66,16 @@ A website where you can test the available APIs we have.
  * The app runs in Heroku at https://warm-meadow-53471.herokuapp.com/
  * Database ?
  * OpenStack? Docker?
+.env file must have 
+		MONGO_ADDRESS=<mongodb address:port>
+		MONGO_USER=<username>
+		MONGO_PASSWORD=<password>
+		MONGO_DATABASE=<database name>
+
+Run with: `docker run --name app --rm --env-file ./.env -p 8080:8080 -d celebrian/api:latest`
+
+If you want to build it yourself use: `docker build --rm -t <user>/<image>:<tag> .`
+Then: `docker run --name <name> --rm --env-file <path/to/env/file/> -p <port>:8080 -d <user>/<image>:<tag>
 
 ## Additional information
-Created by Alexander Jakobsen, Martin Brådalen, Mats Ove Mandt Skjærstein
+Created by Alexander Jakobsen, Martin Brådalen, Mats Ove Mandt Skjærstein with help from Per-Kristian Kongelf Buer
