@@ -20,12 +20,16 @@ func OldPosts(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintln(w, val)
 		}
 	*/
-	commands = strings.Join([]string{
-		commands, "\n",
-		commandTimeStamp, "\t",
-		postMemory, "\n"},
-		"")
 
+	if strings.Contains(commands, commandTimeStamp) {
+		return
+	} else {
+		commands = strings.Join([]string{
+			commands, "\n",
+			commandTimeStamp, "\t",
+			postMemory, "\n"},
+			"")
+	}
 	fmt.Fprintln(w, "Last used command: "+postMemory)
 	fmt.Fprintln(w, "\n\nList of previously used commands: ")
 	fmt.Fprintln(w, commands)
