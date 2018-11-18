@@ -11,12 +11,6 @@ var postMemory string
 var commands string
 var commandTimeStamp string
 
-var command = strings.Join([]string{
-	commands, "\n",
-	commandTimeStamp, "\t",
-	postMemory, "\n"},
-	"")
-
 // OldPosts prints all the preveous posts from dialogflow,
 // used for analyzing structure of json input, and debugging
 func OldPosts(w http.ResponseWriter, r *http.Request) {
@@ -27,7 +21,16 @@ func OldPosts(w http.ResponseWriter, r *http.Request) {
 		}
 	*/
 
+	if strings.Contains(commands, commandTimeStamp) {
+		return
+	} else {
+		commands = strings.Join([]string{
+			commands, "\n",
+			commandTimeStamp, "\t",
+			postMemory, "\n"},
+			"")
+	}
 	fmt.Fprintln(w, "Last used command: "+postMemory)
 	fmt.Fprintln(w, "\n\nList of previously used commands: ")
-	fmt.Fprintln(w, command)
+	fmt.Fprintln(w, commands)
 }
