@@ -6,14 +6,11 @@ import (
 	"strings"
 )
 
-func GetWiki(w http.ResponseWriter, r *http.Request) {
+func GetWiki(w http.ResponseWriter, r *http.Request, s string) {
 
-
-
-	srcString := "Norway"
-	srcString = strings.Replace(srcString, " ", "_", -1)
+	s = strings.Replace(s, " ", "_", -1)
 	// Appends the normalized query to the URL of the http request.
-	url := "https://en.wikipedia.org/w/api.php?action=opensearch&limit=1&format=json&search=" + srcString
+	url := "https://en.wikipedia.org/w/api.php?action=opensearch&limit=1&format=json&search=" + s
 
 	// Sets up a new request with the correct headers; JSON formatted response.
 	req, err := http.NewRequest("GET", url, nil)
