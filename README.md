@@ -6,33 +6,34 @@ This API is used by [dialogflow](https://dialogflow.com/) to post different mess
 
 ***
 ## Project Idea
-Connect a chat-board(Slack) with a Professional chat-bot(Dialogflow), and make an API that the chat-bot uses
+Connect a chat-board (Slack) with a Professional chat-bot (Dialogflow), and make an API that the chat-bot uses
 to get user replies based on our business logic. Statistics for the use of different features will be stored in a
-MongoDB database. The application will be deployed on Heroku. but it will be possible to use it locally on our own
+MongoDB database. The application will be deployed on Heroku, but it will be possible to use it locally on our own
 server as long as you have public IP-address. The local version will be deployed using docker.
 
 The business logic in this project will be to get a parameter form the chat-bot. Use them to get some information
-form the internet(get data from online public API's). And reply back to the chat-bot.  
+form the internet (get data from online public API's). And reply back to the chat-bot.  
 
 We got the idea for this project form Christopher Frantz.
 
 
-The Plan for the project was for the team members to have 2 tasks each. set up 1 API request handler. And some other
+The Plan for the project was for the team members to have 2 tasks each. Set up 1 API request handler, and some other
 thing based on available time. It is up to each team member to find there own API request case to implement.
-the other thing to be done was originally related to the list of features we had to use(Heroku, Docker, Database, Cloud function, Openstack).
+The other thing to be done was originally related to the list of features we had to use (Heroku, Docker, Database, Cloud function, Openstack).
 
-total work all members:  		115,5 hours  
-total work Alexander Jakobsen: 		37 hours  
-total work Mats Ove Mandt Skjærstein: 	27 hours  
-total work Per-Kristian: 		17 hours  
-total work  Martin: 			19,5 hours  
-total work Krisian Lund:  		15 hours
+### Work done:
+Total work all members: 115,5 hours  
+Total work Alexander Jakobsen: 37 hours  
+Total work Mats Ove Mandt Skjærstein: 27 hours  
+Total work Per-Kristian: 17 hours  
+Total work  Martin: 19,5 hours  
+Total work Krisian Lund: 15 hours
 
 
 
-for full log of all tasks and work time spent by each team member. Se the repo wiki "work log" sections.
+For full log of all tasks and work time spent by each team member. Se the repo wiki "work log" sections.
 
-what we succeeded at:
+What we succeeded at:
 * Connect a chat-board(Slack) with a chat-bot(Dialogflow)
 * Make an API that the chat-bot uses to get user replies
 * Make 5 API request handlers
@@ -41,13 +42,13 @@ what we succeeded at:
 * make a nicer website(using html and css) for testing API features without using slack
 
 
-what we failed at
+What we failed at
 * Cloud functions
 
-we dident find a good use for openstack, so we droped it.
+We dident find a good use for openstack, so we droped it.
 
 
-we have used discord and in person meetings for group communication. all team members are able to push to github. And view Heroku
+We have used discord and in person meetings for group communication. All team members are able to push to github, and view the Heroku
 project page.
 
 
@@ -62,12 +63,12 @@ Code quality
  Everything ok
 ```
 
-continuous integration
+Continuous integration:
 
-    automatic deployment form github to heroku. if compile fails then we are notified by mail
+    Automatic deployment form github to heroku. If compile fails then we are notified by mail.
 
 
-in order to run the tests locally you must provide the following environmental variables( reviews will be given our data)
+In order to run the tests locally you must provide the following environmental variables (reviews will be given our data).
 
   export MONG_ADDRESS=
   export MONG_DATABASE=
@@ -127,7 +128,7 @@ ok      github.com/isberg1/IMT2681-Assignment-3/handlers        2.043s  coverage
 
 # Using the program
 
-Log in to the Slack Channel you have been invited to
+Log in to the Slack Channel you have been invited to and
 input on of the commands bellow
 
 ## available Slack commands
@@ -174,7 +175,7 @@ Correct json request:
       }
     }],
 
-acceptable values for parameter b are:
+Acceptable values for parameter b are:
 "joke"          For a chuch Norris Joke
 "dad"           For a dad Joke
 "cat gif"       For a cat git
@@ -214,8 +215,10 @@ A website where you can test some of the available APIs we have.
 
 ## How this app is deployed
  * The app runs in Heroku at https://warm-meadow-53471.herokuapp.com/
- * Database ?
- * OpenStack? Docker?
+ * The database (MongoDB) is stored in [mlab.com](https://mlab.com/) MongoLabs Sandbox.
+ * The app can run localy in a Docker container.
+
+ ### Docker:
 
  .env file must have
 

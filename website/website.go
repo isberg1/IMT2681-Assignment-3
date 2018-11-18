@@ -295,7 +295,7 @@ func APIContent(w http.ResponseWriter, r *http.Request) {
 	case "addoptDog":
 		PageVars.Text = testAddoptDog()
 		if PageVars.Text == "" {
-			PageVars.Text = "There are no dogs to addopt"
+			PageVars.Text = "There are no dogs to adopt"
 			displayText(w, r)
 		} else {
 			displayImage(w, r)
