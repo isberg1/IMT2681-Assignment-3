@@ -70,12 +70,13 @@ Continuous integration:
 
 In order to run the tests locally you must provide the following environmental variables (reviews will be given our data).
 
-  export MONG_ADDRESS=
-  export MONG_DATABASE=
-  export MONGO_PASSWORD=
-  export MONGO_USER=
-  export MONGO_ADDRESS=
-
+```
+export MONG_ADDRESS=
+export MONG_DATABASE=
+export MONGO_PASSWORD=
+export MONGO_USER=
+export MONGO_ADDRESS=
+```
 
 cd handlers/
 
