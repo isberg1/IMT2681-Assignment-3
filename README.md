@@ -53,8 +53,9 @@ Code quality
 * go fmt
 * gocyclo
 * gometalinter -- metalinter
-
-    Everything ok
+```
+ Everything ok
+```
 
 continuous integration
 
@@ -71,6 +72,8 @@ in order to run the tests locally you must provide the following environmental v
 
 
 cd handlers/
+
+
 go test . -v -cover
 
 # Using the program
