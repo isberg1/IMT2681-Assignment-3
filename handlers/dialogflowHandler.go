@@ -57,6 +57,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	postMemory = str.QueryResult.Parameters.B
 	// select action based on request parameter
 	switch str.QueryResult.Parameters.B {
 	case "joke":
@@ -109,7 +110,6 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	Statistic(str.QueryResult.Parameters.B)
 
 	// log request
-	postMemory = str.QueryResult.Parameters.B
 }
 
 /*

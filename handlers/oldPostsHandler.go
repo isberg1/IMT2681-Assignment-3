@@ -23,6 +23,6 @@ func OldPosts(w http.ResponseWriter, r *http.Request) {
 		commands, "\n",
 		postMemory, "\n"},
 		"")
-
+	fmt.Fprintln(w, postMemory)
 	fmt.Fprintln(w, commands)
 }
