@@ -16,7 +16,6 @@ func GetWiki(w http.ResponseWriter, r *http.Request, s string) {
 	// Sets up a new request with the correct headers; JSON formatted response.
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("redirect", "resolve")
 	// Opens a client towards the API so that the headers information can be passed through.
 	client := &http.Client{}
 	resp, err := client.Do(req)
@@ -30,7 +29,7 @@ func GetWiki(w http.ResponseWriter, r *http.Request, s string) {
 	bodyStr := string(body)
 	// Splits out the string into slices and removes all unnecessary text.
 	convertedStr := strings.Split(bodyStr, "[")
-//	finalStr := strings.Trim(string(convertedStr[3]), "],")
+	finalStr := strings.Trim(string(convertedStr[4]), "]]")
 	// Sends the resulting string to the dialogflowHandler.
-	postToDialogflow(w, string(convertedStr[4]))
+	postToDialogflow(w, finalStr)
 }
