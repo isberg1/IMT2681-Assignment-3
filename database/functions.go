@@ -23,7 +23,7 @@ const (
 func Connect() {
 	session := &mgo.DialInfo{
 		Addrs:    []string{os.Getenv("MONGO_ADDRESS")},
-		Timeout:  60 * time.Second,
+		Timeout:  10 * time.Second,
 		Database: os.Getenv("MONGO_DATABASE"),
 		Username: os.Getenv("MONGO_USER"),
 		Password: os.Getenv("MONGO_PASSWORD"),
