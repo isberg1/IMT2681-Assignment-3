@@ -16,6 +16,7 @@ var logTimestamp string
 // Log displays all log messages, used for storing errors, and debugging
 func Log(w http.ResponseWriter, r *http.Request) {
 
+	fmt.Fprintln(w, "Errors: ")
 	fmt.Fprintln(w, logArray)
 
 }
