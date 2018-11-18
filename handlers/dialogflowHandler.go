@@ -109,7 +109,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	Statistic(str.QueryResult.Parameters.B)
 
 	// log request
-	postMemory = string(read)
+	postMemory = str.QueryResult.Parameters.B
 }
 
 /*
