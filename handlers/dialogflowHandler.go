@@ -31,6 +31,7 @@ type Para struct {
 // Querry is used for receiving requests form dialogflow
 type Querry struct {
 	Parameters Para `json:"parameters"`
+	QueryText string `json:"queryText"`
 }
 
 // DialogflowPostStruct is used for receiving requests form dialogflow

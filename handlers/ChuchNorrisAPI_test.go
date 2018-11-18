@@ -18,7 +18,7 @@ func Test_GetChuckNorrisJoke(t *testing.T) {
 	database.Connect()
 
 	contentType := "application/json"
-	querry := Querry{Para{B: "joke"}}
+	querry := Querry{Para{B: "joke"}, ""}
 	strc := DialogflowPostStruct{ResponseID: "testid", FulfillmentText: "joke", QueryResult: querry}
 
 	str, err := json.Marshal(strc)

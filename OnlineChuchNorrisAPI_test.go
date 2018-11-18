@@ -17,7 +17,8 @@ func Test_getChuckNorrisJoke(t *testing.T) {
 	contentType := "application/json"
 
 	// make a struct with test values
-	querry := handlers.Querry{handlers.Para{B: "joke"}}
+	para := handlers.Para{B: "joke"}
+	querry := handlers.Querry{para}
 	strc := handlers.DialogflowPostStruct{ResponseId: "testid", FulfillmentText: "joke", QueryResult: querry}
 
 	// make json string in correct format( imitating a request from dialogflow chat-bot)

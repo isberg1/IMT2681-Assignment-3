@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	mgo "gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -51,9 +51,9 @@ func InsertStatistics(stat Statistics) error {
 
 // GetStatObject returns 1 stat document. The stats database is supposed to only contain one object,
 //therefore one can assume that no sorting or query method is required.
-func GetStatObject() (Statistics, error) {
+func GetStatObject(command string) (Statistics, error) {
 	var stat Statistics
-	err := db.C(STAT).Find(nil).One(&stat)
+	err := db.C(STAT).Find(bson.M{"command":command}).One(&stat)
 	return stat, err
 }
 
@@ -83,8 +83,15 @@ func FindOldestDog() (Dog, error) {
 func DeleteDogWithID(id string) (Dog, error) {
 	var dog Dog
 	err := db.C(COLLECTION).FindId(bson.ObjectIdHex(id)).One(&dog)
-	err = db.C(COLLECTION).RemoveId(bson.ObjectIdHex(id))
-	return dog, err
+	if err != nil {
+		return dog, err
+	}
+
+	err2 := db.C(COLLECTION).RemoveId(bson.ObjectIdHex(id))
+	if err2 != nil {
+		return dog, err
+	}
+	return dog, nil
 }
 
 // FindCount finds a count of how many object in current collection in the DB

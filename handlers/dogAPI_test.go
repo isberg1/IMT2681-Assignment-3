@@ -9,6 +9,7 @@ import (
 	"net/http/httptest"
 	"testing"
 )
+
 func Test_db(t *testing.T) {
 
 	database.Connect()
@@ -71,7 +72,7 @@ func Test_adoptDog(t *testing.T)  {
 func chechResponse(t *testing.T, command string) {
 
 	contentType := "application/json"
-	querry := Querry{Para{B: command}}
+	querry := Querry{Para{B: command}, ""}
 	strc := DialogflowPostStruct{ResponseID: "testid", FulfillmentText: command, QueryResult: querry}
 
 	str, err := json.Marshal(strc)
