@@ -22,11 +22,11 @@ thing based on available time. It is up to each team member to find there own AP
 the other thing to be done was originally related to the list of features we had to use(Heroku, Docker, Database, Cloud function, Openstack).
 
 total work all members:
-total work Alexander Jakobsen:
-total work :
-total work :
-total work :
-total work :
+total work Alexander Jakobsen: 		37 hours
+total work Mats Ove Mandt Skjærstein: 	27 hours
+total work Per-Kristian: 		17 hours
+total work  Martin: 			19,5 hours
+total work Krisian Lund:
 
 for full log of all tasks and work time spent by each team member. Se the repo wiki "work log" sections.
 
@@ -42,6 +42,8 @@ what we succeeded at:
 what we failed at
 * Cloud functions
 
+we dident find a good use for openstack, so we droped it.
+
 
 we have used discord and in person meetings for group communication. all team members are able to push to github. And view Heroku
 project page.
@@ -49,10 +51,11 @@ project page.
 
 
 Code quality
-* golinter
-* go fmt
-* gocyclo
-* gometalinter -- metalinter
+* golinter .
+* go fmt .
+* gocyclo .
+* gometalinter -- metalinter .
+* go vet --all .
 ```
  Everything ok
 ```
