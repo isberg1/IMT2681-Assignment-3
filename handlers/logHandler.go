@@ -21,9 +21,9 @@ func Log(w http.ResponseWriter, r *http.Request) {
 }
 
 // adds new log messages to storage
-func logging(s string) {
+func logging( /* w http.ResponseWriter, r *http.Request,*/ s string) {
 	logTimestamp = time.Now().String()
 	logArray = strings.Join([]string{
-		logTimestamp, "\t", logArray, "\n"},
+		logTimestamp, "\t", s, "\n"},
 		"")
 }
