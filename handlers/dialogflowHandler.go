@@ -108,7 +108,7 @@ func Dialogflow(w http.ResponseWriter, r *http.Request) {
 	case "show all":
 		ShowAllDogs(w, r)
 
-	case "norway":
+	case "Norway":
 		GetWiki(w, r)
 
 	default:
