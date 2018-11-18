@@ -7,7 +7,8 @@ import (
 )
 
 func GetWiki(w http.ResponseWriter, r *http.Request, s string) {
-
+	// Receives the search string and normalizes the query.(Exchanges spaces with '_')
+	s = strings.Replace(s, "search", " ", 1)
 	s = strings.Replace(s, " ", "_", -1)
 	// Appends the normalized query to the URL of the http request.
 	url := "https://en.wikipedia.org/w/api.php?action=opensearch&limit=1&format=json&search=" + s
