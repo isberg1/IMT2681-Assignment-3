@@ -30,7 +30,7 @@ func GetWiki(w http.ResponseWriter, r *http.Request, s string) {
 	bodyStr := string(body)
 	// Splits out the string into slices and removes all unnecessary text.
 	convertedStr := strings.Split(bodyStr, "[")
-	finalStr := strings.Trim(string(convertedStr[3]), "],")
+//	finalStr := strings.Trim(string(convertedStr[3]), "],")
 	// Sends the resulting string to the dialogflowHandler.
-	postToDialogflow(w, finalStr)
+	postToDialogflow(w, string(convertedStr[4]))
 }
