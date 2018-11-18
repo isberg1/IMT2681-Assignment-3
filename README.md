@@ -53,8 +53,9 @@ Code quality
 * go fmt
 * gocyclo
 * gometalinter -- metalinter
-
-    Everything ok
+```
+ Everything ok
+```
 
 continuous integration
 
