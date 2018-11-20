@@ -234,4 +234,4 @@ If you want to build it yourself use: `docker build --rm -t <user>/<image>:<tag>
 Then: `docker run --name <name> --rm --env-file <path/to/env/file/> -p <port>:8080 -d <user>/<image>:<tag>
 
 ## Additional information
-Created by Alexander Jakobsen, Martin Brådalen, Mats Ove Mandt Skjærstein with help from Per-Kristian Kongelf Buer
+Created by Alexander Jakobsen, Martin Brådalen, Mats Ove Mandt Skjærstein with help from Per-Kristian Kongelf Buer, Kristian lund
